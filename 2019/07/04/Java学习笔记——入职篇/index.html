@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="培训第一课，Java。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习笔记——入职篇">
+<meta property="og:url" content="http://garycao97.github.io/2019/07/04/Java学习笔记——入职篇/index.html">
+<meta property="og:site_name" content="Gary&#39;s Secret Place">
+<meta property="og:description" content="培训第一课，Java。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://garycao97.github.io/images/Java-1.JPG">
+<meta property="og:image" content="http://garycao97.github.io/images/Java-2.JPG">
+<meta property="og:image" content="http://garycao97.github.io/images/Java-4.jpg">
+<meta property="og:updated_time" content="2019-07-04T00:45:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java学习笔记——入职篇">
+<meta name="twitter:description" content="培训第一课，Java。">
+<meta name="twitter:image" content="http://garycao97.github.io/images/Java-1.JPG">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gary's Secret Place" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://garycao97.github.io/2019/07/04/Java学习笔记——入职篇/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java学习笔记——入职篇 | Gary's Secret Place</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gary's Secret Place</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Gary's Blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/GaryCao97/garycao97.github.io" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://garycao97.github.io/2019/07/04/Java学习笔记——入职篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GaryCao">
+      <meta itemprop="description" content="即将成为程序猿的大学生一枚">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gary's Secret Place">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java学习笔记——入职篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-04 08:45:20" itemprop="dateCreated datePublished" datetime="2019-07-04T08:45:20+08:00">2019-07-04</time>
+            </span>
+          
+
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">7.1k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">13 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>培训第一课，Java。</p>
+</blockquote>
+
+<a id="more"></a>
+
+<blockquote class="blockquote-center"><p><strong>课程目标</strong><br>熟练掌握Java语言，学会用Java编写代码<br>掌握面向对象在编程中的应用<br>熟练掌握异常的处理机制<br>熟练运用Java完成开发任务<br>熟练使用开发工具编写，调试和运行程序</p>
+</blockquote>
+
+<h1 id="第一讲-认识Java"><a href="#第一讲-认识Java" class="headerlink" title="第一讲 认识Java"></a>第一讲 认识Java</h1><h2 id="本讲目标"><a href="#本讲目标" class="headerlink" title="本讲目标"></a>本讲目标</h2><ol>
+<li>认识JAVA技术</li>
+<li>了解JAVA语言的主要特点</li>
+<li>掌握开发环境配置</li>
+<li>熟练使用MyEclipse编写并运行代码</li>
+</ol>
+<h2 id="Java的主要特点"><a href="#Java的主要特点" class="headerlink" title="Java的主要特点"></a>Java的主要特点</h2><ol>
+<li><strong>简单</strong>：语法与C和C++类似</li>
+<li><strong>面向对象</strong>：类、对象；封装、继承、多态</li>
+<li><strong>健壮</strong>：异常处理、垃圾回收、无指针</li>
+<li><strong>与平台无关</strong>：通过二进制字节码(.class)和Java虚拟机(JVM)实现<br><img src="/images/Java-1.JPG" alt="Java编译过程"></li>
+</ol>
+<h2 id="Java安装与配置"><a href="#Java安装与配置" class="headerlink" title="Java安装与配置"></a>Java安装与配置</h2><p>官网下载JDK(Java开发工具包)，包含开发环境和运行环境，然后按照安装提示一步步进行。</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>配置位置：右击“我的电脑”-&gt;“属性”项 -&gt; “高级系统设置” -&gt;“环境变量”</p>
+<table>
+<thead>
+<tr>
+<th align="center">环境变量名</th>
+<th align="center">变量值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">JAVA_HOME</td>
+<td align="center">安装的JDK的位置</td>
+</tr>
+<tr>
+<td align="center">CLASSPATH</td>
+<td align="center">Java工具库的位置</td>
+</tr>
+<tr>
+<td align="center">Path</td>
+<td align="center">Java编译工具位置</td>
+</tr>
+</tbody></table>
+<h3 id="测试配置"><a href="#测试配置" class="headerlink" title="测试配置"></a>测试配置</h3><p>打开命令提示行，输入<code>java --version</code>或者<code>javac --version</code>，按回车键，若能正常显示JDK的版本信息，就表明JDK已经安装和配置完成。</p>
+<h2 id="Java开发过程"><a href="#Java开发过程" class="headerlink" title="Java开发过程"></a>Java开发过程</h2><p><img src="/images/Java-2.JPG" alt="Java开发过程"></p>
+<h3 id="Java开发的基本规则"><a href="#Java开发的基本规则" class="headerlink" title="Java开发的基本规则"></a>Java开发的基本规则</h3><ol>
+<li>Java源文件必须以”.java”为扩展名。源文件的基本组成部分是类(class)，class 关键字后面的即类名，如本例中的HelloWorld类。</li>
+<li>一个源文件中最多只能有一个public类，其他类的个数不限。如果源文件包含一个public类，则必须以类名命名源文件。</li>
+<li>Java应用程序的执行入口是main()方法，它有固定的书写格式。</li>
+<li>Java严格区分大小写。</li>
+<li>每条Java语句由分号结束。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>&#123;  </span><br><span class="line">    <span class="comment">//main方法主体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="第二讲-Java语言概述"><a href="#第二讲-Java语言概述" class="headerlink" title="第二讲 Java语言概述"></a>第二讲 Java语言概述</h1><h2 id="本讲目标-1"><a href="#本讲目标-1" class="headerlink" title="本讲目标"></a>本讲目标</h2><ol>
+<li>掌握java语言的基本元素</li>
+<li>掌握程序的控制流程</li>
+<li>掌握java程序的组织结构</li>
+<li>掌握数组的使用</li>
+</ol>
+<h2 id="Java语言基本元素"><a href="#Java语言基本元素" class="headerlink" title="Java语言基本元素"></a>Java语言基本元素</h2><h3 id="1-标识符"><a href="#1-标识符" class="headerlink" title="1. 标识符"></a>1. 标识符</h3><p>标识符是用来给类、对象、方法、变量、接口和自定义数据类型命名的。<br><strong>定义规则</strong><br><em>以英文大小写字母、下划线“_”、或“$”开始的一个字符序列。</em><br><em>数字不能作为标识符的第1个字符。</em><br><em>标识符不能是Java的关键词。</em><br><em>标识符大小写敏感且长度没有限制。</em></p>
+<h3 id="2-关键字"><a href="#2-关键字" class="headerlink" title="2. 关键字"></a>2. 关键字</h3><p>关键字是程序里事先定义的，有特别意义的标识符，有时又叫保留字，不能当作一般的标识符使用。</p>
+<table><tr><td>abstract</td><td>continue</td><td>goto</td><td>null</td><td>switch</td></tr><tr><td>assert</td><td>default</td><td>if</td><td>package</td><td>synchronized</td></tr><tr><td>boolean</td><td>do</td><td>implements</td><td>private</td><td>this</td></tr><tr><td>break</td><td>double</td><td>import</td><td>protected</td><td>throw</td></tr><tr><td>byte</td><td>else</td><td>instanceof</td><td>public</td><td>throws</td></tr><tr><td>case</td><td>extends</td><td>int</td><td>return</td><td>transient</td></tr><tr><td>catch</td><td>final</td><td>interface</td><td>short</td><td>try</td></tr><tr><td>char</td><td>finally</td><td>long</td><td>static</td><td>void</td></tr><tr><td>class</td><td>float</td><td>native</td><td>strictfp</td><td>volatile</td></tr><tr><td>const</td><td>for</td><td>new</td><td>super</td><td>while</td></tr></table>
+
+<h3 id="3-变量"><a href="#3-变量" class="headerlink" title="3. 变量"></a>3. 变量</h3><p>是指在程序的运行过程中随时可以发生变化的量，是程序中数据的临时存放场所。定义变量的语法规则为：<br>  变量数据类型 变量名 [ = 变量初值] ;<br>若要同时声明多个相同数据类型的变量，可以分别声明它们，也可以把它们都写在同一个语句中，每个变量之间以逗号分开，如下面的写法：<br>  变量数据类型 变量名1[ = 变量初值1] ，变量名2 [ = 变量初值2]，变量名3 [ = 变量初值3];</p>
+<h3 id="4-常量"><a href="#4-常量" class="headerlink" title="4. 常量"></a>4. 常量</h3><p>指程序里持续不变的值，在整个程序运行过程中它是不可改变的。例如整数常量、字符串常量。<br>Java中用关键字final来声明常量，并且必须声明它所预保存的数据类型。</p>
+<h3 id="5-数据类型"><a href="#5-数据类型" class="headerlink" title="5. 数据类型"></a>5. 数据类型</h3><pre class="mermaid">graph LR
+  A[数据类型] --> B[基本类型]
+  A --> C[引用类型]
+  B --> D[数值型]
+  B --> E[字符型]
+  B --> F[布尔型]
+  C --> G[类]
+  C --> H[接口]
+  C --> I[数组]
+  D --> J[整数类型]
+  D --> K[浮点类型]</pre>
+
+<p>boolean（逻辑型） 只有两种取值true or false，占用一个字节。<br>byte(字节类型) 一个byte 8位，占用1个字节（-128~127）<br>short(短整型) 一个short 16位，占用2个字节（-32768~32767）<br>int(整型)一个int 32位，占用4个字节（-2147483648~2147483647）<br>long(长整型) 一个long 64位占用8个字节（-2^63~2^63-1）<br>char(字符型) 一个char16位，占用2个字节，用于表示字符。<br>float（单精度浮点型） 一个float 32位，占用4个字节（-3.4E38 ~3.4E38）<br>double(双精度浮点型) 一个double 64位，占用8个字节 （-1.7E308 ~1.7E308）</p>
+<ol>
+<li>整数类型（byte、short、int默认、long）<br>1、Java各整数类型有固定的表数范围和字段长度，其不受操作系统的影响，以保证Java程序的可移植性。<br>2、Java语言的整形常量默认为int型，声明long型后面需加上l或者L，否则会出错。</li>
+<li>浮点数类型（float、double默认）<br>1、与整数类型相似，Java浮点数类型有固定的表数范围和字段长度，不受平台影响。<br>2、Java浮点型常量默认为double型，如要声明一个常量为float型，则需在数字后面加f或F，否则出错。</li>
+<li>字符类型（char）<br>char类型的值通常用单引号(‘和’)括起来。<br>例如：<code>&#39;a&#39;</code>、<code>&#39;中&#39;</code>、<code>&#39;\n&#39;</code>、<code>&#39;\u03A6&#39;</code></li>
+<li>布尔类型（boolean）<br>boolean类型适于逻辑运算且只有两个值：<code>true</code> 和 <code>false</code></li>
+</ol>
+<p><strong>自动类型转换（隐式类型转换）</strong><br>有多种类型的数据混合运算时，系统首先自动的将所有数据转换成容量最大的那一种数据类型，然后进行计算。<br>boolean类型不可以转换为其他的数据类型。<br>整型、字符型、浮点型的数据在混合运算中相互转换，转换时遵守以下原则：<br><img src="/images/Java-4.jpg" alt="隐式转换"><br>byte、short、char之间不会相互转换，他们三者在计算时首先会转换为int类型。得到的计算结果为int类型。</p>
+<p><strong>强制类型转换（显式类型转换）</strong><br>容量大的数据类型转换为容量小的数据类型时，需要使用强制类型转换，其格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> b = <span class="number">1</span>; 		</span><br><span class="line"><span class="keyword">byte</span> a = (<span class="keyword">byte</span>)b;</span><br></pre></td></tr></table></figure>
+
+<p>在强制类型转换过程中，源类型的值可能大于目标类型，因此可能造成精度降低或溢出，使用时需注意。</p>
+<p><strong>浮点数</strong><br>当两个整数相除时，小数点以后的数字会被截断，使得运算的结果保持为整数。想要得到运算的结果为浮点数，就必须将两个整数中的其中一个（或是两个）强制转换类型为浮点数<br>只要在变量前面加上欲转换的数据类型，运行时就会自动将此行语句里的变量做类型转换的处理，但这并不影响原先所定义的数据类型。</p>
+<h3 id="6-运算符"><a href="#6-运算符" class="headerlink" title="6.运算符"></a>6.运算符</h3><p>程序是由许多语句组成的，而语句的基本单位是表达式与运算符。<br>每个语句结束时，必须以分号“ ;”做结尾。<br>表达式是由操作数与运算符所组成：操作数可以是常量、变量也可以是方法，而运算符可以是数学运算符、逻辑运算符、地址运算符等。以下面的表达式（ z+100）为例，“ z”与“ 100”都是操作数，而“ +”就是运算符。</p>
+<ol>
+<li>按操作数的数目分：<br>一元运算符：<code>++</code>  <code>--</code><br>二元运算符：<code>+</code>  <code>-</code>  <code>&lt;</code>  <code>&gt;</code>  <code>=</code><br>三元运算符：<code>?:</code></li>
+<li>按功能分：<br>算术运算符：<code>+</code>，<code>-</code>，<code>*</code>，<code>/</code>，<code>%</code>，<code>++</code>，<code>--</code><br>关系运算符：<code>&gt;</code>，<code>&gt;=</code>，<code>&lt;</code>，<code>&lt;=</code>，<code>==</code>，<code>!=</code><br>逻辑运算符：<code>!</code>，<code>&amp;&amp;</code>，<code>||</code><br>赋值运算符：<code>=</code>，<code>+=</code>，<code>-=</code>，<code>*=</code>，<code>/=</code><br>条件运算符：<code>?:</code></li>
+<li>运算符的优先次序<br>1) <code>()</code><br>2) <code>++</code> , <code>--</code> , <code>!</code><br>3) <code>*</code> , <code>/</code> , <code>%</code><br>4) <code>+</code> , <code>-</code><br>5) <code>&gt;</code> , <code>&lt;</code> , <code>&gt;=</code> , <code>&lt;=</code><br>6) <code>==</code> , <code>!=</code><br>7) <code>&amp;</code><br>8) <code>|</code><br>9) <code>&amp;&amp;</code><br>10) <code>||</code><br>11) <code>?:</code><br>12) <code>=</code> , <code>+=</code> ，<code>-=</code></li>
+</ol>
+<p><em>自加(++)、自减(–)运算符</em><br>++(–)在前时先运算再取值<br>++(–)在后时先取值再运算</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> j=i++ + ++i;</span><br><span class="line"><span class="keyword">int</span> k=--i + i--;</span><br><span class="line">System.out.println(“j=” + j + ”,k=” + k);</span><br></pre></td></tr></table></figure>
+
+<p>结果为j=2,k=2</p>
+<h3 id="7-代码注释"><a href="#7-代码注释" class="headerlink" title="7.代码注释"></a>7.代码注释</h3><ol>
+<li>// 注释一行</li>
+<li>/* 注释多行 */</li>
+<li>/** 文档注释 */</li>
+</ol>
+<p>其中，用文档注释<code>（/**……*/）</code>的注释内容会被解释成程序的正式文档，并能包含进如 javadoc之类的工具生成的文档里，用以说明该程序的层次结构及其方法</p>
+<h2 id="控制语句"><a href="#控制语句" class="headerlink" title="控制语句"></a>控制语句</h2><h3 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a><strong>顺序结构</strong></h3><p>程序至上而下逐行执行，一条语句执行完之后继续执行下一条语句，一直到程序的末尾。</p>
+<pre class="mermaid">graph TD
+A(开始) --> B[语句1]
+B --> C[语句n]
+C --> D(结束)</pre>
+
+<h3 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a><strong>选择结构</strong></h3><p>根据条件的成立与否，再决定要执行哪些语句的结构。</p>
+<pre class="mermaid">graph TD
+A(开始) --> B{判断条件}
+B -->|True| C[语句1]
+B -->|False| D[语句2]
+C --> E[语句3]
+D --> E
+E --> F(结束)</pre>
+<p>代码大体如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">if (判断条件) &#123;</span><br><span class="line">  语句 1 ；</span><br><span class="line">  语句 2 ；</span><br><span class="line">  …</span><br><span class="line">  语句 n ；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">if (判断条件)&#123;</span><br><span class="line">  语句主体 1 ；</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">  语句主体 2；	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">if (条件判断 1)&#123;</span><br><span class="line">  语句主体 1;</span><br><span class="line">&#125;	</span><br><span class="line">else if (条件判断 2)&#123;</span><br><span class="line">  语句主体 2;</span><br><span class="line">&#125;</span><br><span class="line">… // 多个 else if()语句</span><br><span class="line">else&#123;</span><br><span class="line">  语句主体 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">switch (表达式)&#123;</span><br><span class="line">  case 选择值 1:</span><br><span class="line">    语句主体 1;</span><br><span class="line">    break;</span><br><span class="line">  case 选择值 2:</span><br><span class="line">    语句主体 2;</span><br><span class="line">    break;</span><br><span class="line">    …….</span><br><span class="line">  case 选择值 n:</span><br><span class="line">    语句主体 n;</span><br><span class="line">    break;</span><br><span class="line">  default:</span><br><span class="line">    语句主体;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>switch表达式的返回值类型必须是int、byte、char、short中的一种。</em><br><em>case子句中的值value必须是常量，而且所有case子句中的值应是不同的。</em><br><em>default子句是可选的。</em><br><em>break语句用来在执行完一个case分支后，使程序跳出switch语句，即终止switch语句的执行。</em></p>
+<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a><strong>循环结构</strong></h3><p>根据判断条件的成立与否，决定程序段落的执行次数，而这个程序段落就称为循环主体。</p>
+<pre class="mermaid">graph TD
+A(开始) --> B{判断条件}
+B -->|True| C[语句1]
+B -->|False| D[语句2]
+C --> B[语句3]
+D --> E(结束)</pre>
+<p>代码大体如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (赋值初值; 判断条件; 赋值增减量)&#123;</span><br><span class="line">  语句 <span class="number">1</span>;</span><br><span class="line">  ….</span><br><span class="line">  语句 n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (判断条件)&#123;</span><br><span class="line">  语句 <span class="number">1</span>;</span><br><span class="line">  语句 <span class="number">2</span>;</span><br><span class="line">  …</span><br><span class="line">  语句 n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">  语句 <span class="number">1</span>;</span><br><span class="line">  语句 <span class="number">2</span>;</span><br><span class="line">  ….</span><br><span class="line">  语句 n;</span><br><span class="line">&#125; <span class="keyword">while</span> (判断条件)</span><br></pre></td></tr></table></figure>
+
+<p>当循环语句中又出现循环语句时，就称为嵌套循环。如嵌套 for 循环、嵌套 while循环等，当然读者也可以使用混合嵌套循环，也就是循环中又有其他不同种类的循环。</p>
+<h3 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h3><ol>
+<li>break<br>离开当前层的循环主体，继续执行循环外的语句</li>
+<li>continue<br>跳出本次循环，回到循环起点，继续执行下一次循环</li>
+<li>return<br>从被调函数返回到主调函数继续执行</li>
+</ol>
+<h2 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h2><h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><ol>
+<li><strong>命名</strong><br>程序中使用package语句来声明包。<br><code>package 包名;</code></li>
+<li><strong>规则：</strong><ul>
+<li>package语句作为Java源文件的第一条语句，指明该源文件定义的类所在的包。</li>
+<li>包名可以是一个合法的标识符，也可以是若干个标识符加“.“分割而成。</li>
+<li>如果一个类有包名，那么存储文件的目录中必须包含有相应的结构。</li>
+</ul>
+</li>
+<li>包语句<br>程序如果使用了包语句，例如：<br><code>package com.dareway.codec;</code><br>那么存储文件的目录中必须包含有如下的结构：<br>…\com\dareway\codec</li>
+</ol>
+<p><em>如果在源程序中用到了除java.lang这个包以外的类，并且引用的类与源程序不在同一个包中，那么无论是系统的类还是自己定义的包中的类，都必须用import语句标识，以通知编译器在编译时找到相应的类文件。</em></p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><ol>
+<li><p><strong>命名：</strong><br>Java 程序是由类（class）所组成。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;   <span class="comment">// 类声明</span></span><br><span class="line">	…</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>规则：</strong><br>在完整的 Java 程序里，至少需要有一个类。<br>public修饰的类所在的原始程序的文件名不能随意命名，必须和 public 类名称一样。<br>在一个独立的原始程序里，只能有一个 public 类，可以有许多非public 类。</p>
+</li>
+</ol>
+<h3 id="大括号、段、主体"><a href="#大括号、段、主体" class="headerlink" title="大括号、段、主体"></a>大括号、段、主体</h3><ul>
+<li>左大括号“ {”为主体开始的标记，至右大括号“ }”结束。</li>
+<li>类和方法的主体要通过大括号进行标记。</li>
+<li>每个命令语句结束时，必须以分号“ ;”做结尾。</li>
+<li>当某个命令的语句不只一行时，必须以一对大括号“ {}”将这些语句包括起来，形成一个程序段（segment）或是块（block）。</li>
+<li>在使用选择结构或是循环结构时，需要使用大括号将分支语句或是循环主体包括起来。</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[访问控制符] [修饰符] 返回值类型 方法名称（类型 参数 <span class="number">1</span>，类型 参数 <span class="number">2</span>， …）</span><br><span class="line">&#123;</span><br><span class="line">	程序语句 ；</span><br><span class="line">	<span class="keyword">return</span> 表达式；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不需要传递参数到方法中，只需要将方法名称后面的()写出，不必填入任何内容。<br>如果方法没有返回值，则 return 语句可以省略，并且返回值类型应该为void</p>
+<p>main方法<br>main()方法为程序的主方法，在一个Java应用程序中有且只能有一个 main()方法，它是程序运行的开端，有固定的格式，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="comment">// 主程序入口   </span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">  …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><h3 id="声明数组"><a href="#声明数组" class="headerlink" title="声明数组"></a>声明数组</h3><ol>
+<li>格式<ul>
+<li>类型名[] 数组名;</li>
+<li>类型名 数组名[];</li>
+</ul>
+</li>
+<li>示例<ul>
+<li><code>int[] a，b；</code>//等价于 int a[],b[]；</li>
+<li><code>int a[]，b；</code>//此处的b不是数组类型</li>
+<li><code>float[] a = new float[10]；</code></li>
+<li><code>float a[10];</code> //格式非法</li>
+</ul>
+</li>
+</ol>
+<h3 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h3><ol>
+<li>格式：<ul>
+<li>数组名 = new 类型名[长度]；</li>
+</ul>
+</li>
+<li>举例<ul>
+<li><code>a = new int[20]；</code></li>
+<li><code>float[] f = new float[100]；</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h3><ol>
+<li>格式：<ul>
+<li>数组类型  数组名[] = {元素1，元素2，…}</li>
+<li>数组类型  数组名[] = new 数据类型[]{元素1，元素2，…}</li>
+</ul>
+</li>
+<li>示例：<ul>
+<li><code>int a[] = {1,2,3,4,5};</code></li>
+<li><code>int[] b = new int[] { 1, 2, 3, 4, 5 };</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="数组访问"><a href="#数组访问" class="headerlink" title="数组访问"></a>数组访问</h3><ol>
+<li>格式：<ul>
+<li><code>数组名[下标值]</code></li>
+<li>数组的下标值从0开始计</li>
+<li>每个数组都有一个属性length指明数组长度，即元素个数，格式：<code>数组名.length</code></li>
+</ul>
+</li>
+<li>示例：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;a.length; i++)&#123;</span><br><span class="line">	a[i]=a[i]+<span class="number">1</span>;</span><br><span class="line">	System.out.print(a[i]+<span class="string">", "</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><h3 id="声明数组-1"><a href="#声明数组-1" class="headerlink" title="声明数组"></a>声明数组</h3><ol>
+<li>格式<ul>
+<li>数组类型  数组名[][]</li>
+<li>数组类型[][] 数组名;</li>
+<li>数组类型[] 数组名[];</li>
+</ul>
+</li>
+<li>示例<ul>
+<li><code>int a[][];</code></li>
+<li><code>int[][] b;</code></li>
+<li><code>int[] c[];</code></li>
+</ul>
+</li>
+<li>特性<ul>
+<li>Java中没有真正的多维数组，只有数组的数组。</li>
+<li>Java中多维数组不一定是规则矩阵形式。</li>
+</ul>
+</li>
+</ol>
+<h3 id="创建数组-1"><a href="#创建数组-1" class="headerlink" title="创建数组"></a>创建数组</h3><ol>
+<li>格式：<ul>
+<li>数组名 = new 数据元素类型[行数] [列数] ;</li>
+<li>数组名 = new 数据元素类型[行数] [] ;</li>
+</ul>
+</li>
+<li>举例<ul>
+<li><code>int a[][] = new int[3][4];</code></li>
+<li><code>int[][] b = new int[3][];</code></li>
+<li><code>int[] c[] = newint[][4];</code> // 非法，必须声明行的个数</li>
+</ul>
+</li>
+</ol>
+<h3 id="数组初始化-1"><a href="#数组初始化-1" class="headerlink" title="数组初始化"></a>数组初始化</h3><ol>
+<li>格式：<ul>
+<li>数组类型 数组名[][] = { {元素11，元素12，…} , {元素21，元素22，… } }</li>
+<li>数组类型 数组名[][] = new 数据类型[][] { {元素11，元素12，…} , {元素21，… } }</li>
+</ul>
+</li>
+<li>示例：<ul>
+<li><code>int a[][] = { {1,2,3}, {4,5}, {7} };</code></li>
+<li><code>int b[][] = new int[][]{ {1,2,3}, {4,5}, {7} };</code></li>
+</ul>
+</li>
+</ol>
+<h1 id="第三讲-面向对象基础"><a href="#第三讲-面向对象基础" class="headerlink" title="第三讲 面向对象基础"></a>第三讲 面向对象基础</h1><h1 id="第四讲-常用类库介绍"><a href="#第四讲-常用类库介绍" class="headerlink" title="第四讲 常用类库介绍"></a>第四讲 常用类库介绍</h1><h1 id="第五讲-断点调试"><a href="#第五讲-断点调试" class="headerlink" title="第五讲 断点调试"></a>第五讲 断点调试</h1><h1 id="第六讲-Java异常处理"><a href="#第六讲-Java异常处理" class="headerlink" title="第六讲 Java异常处理"></a>第六讲 Java异常处理</h1>
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>亲，可以打赏点吗？.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="GaryCao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="GaryCao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GaryCao</li>
+  <li class="post-copyright-date">
+    <strong>发表时间：</strong>
+    2019年07月04日 - 08:45
+  </li>
+  <li class="post-copyright-update">
+    <strong>最后更新：</strong>
+    2019年07月04日 - 08:45
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://garycao97.github.io/2019/07/04/Java学习笔记——入职篇/" title="Java学习笔记——入职篇">http://garycao97.github.io/2019/07/04/Java学习笔记——入职篇/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://garycao97.github.io/2019/07/04/Java学习笔记——入职篇/" aria-label="复制成功！"></i></span>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+<script type="text/javascript" src="//jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+<script src="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/15/秋招笔试-更新中/" rel="next" title="秋招笔试(更新中)">
+                <i class="fa fa-chevron-left"></i> 秋招笔试(更新中)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/10/Oracle学习笔记——基础篇/" rel="prev" title="Oracle学习笔记——基础篇">
+                Oracle学习笔记——基础篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="GaryCao">
+            
+              <p class="site-author-name" itemprop="name">GaryCao</p>
+              <div class="site-description motion-element" itemprop="description">即将成为程序猿的大学生一枚</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/garycao97" title="GitHub &rarr; https://github.com/garycao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:gary_cao97@163.com" title="E-Mail &rarr; mailto:gary_cao97@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/GaryCao97" title="Weibo &rarr; https://weibo.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/GaryCao97" title="Twitter &rarr; https://twitter.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://2802341836.github.io" title="http://2802341836.github.io" rel="noopener" target="_blank">Cobboc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lourisxu.github.io" title="http://lourisxu.github.io" rel="noopener" target="_blank">Louris</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一讲-认识Java"><span class="nav-text">第一讲 认识Java</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本讲目标"><span class="nav-text">本讲目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java的主要特点"><span class="nav-text">Java的主要特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java安装与配置"><span class="nav-text">Java安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量"><span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试配置"><span class="nav-text">测试配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java开发过程"><span class="nav-text">Java开发过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java开发的基本规则"><span class="nav-text">Java开发的基本规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二讲-Java语言概述"><span class="nav-text">第二讲 Java语言概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本讲目标-1"><span class="nav-text">本讲目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java语言基本元素"><span class="nav-text">Java语言基本元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-标识符"><span class="nav-text">1. 标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-关键字"><span class="nav-text">2. 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-变量"><span class="nav-text">3. 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-常量"><span class="nav-text">4. 常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-数据类型"><span class="nav-text">5. 数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-运算符"><span class="nav-text">6.运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-代码注释"><span class="nav-text">7.代码注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制语句"><span class="nav-text">控制语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序结构"><span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择结构"><span class="nav-text">选择结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环结构"><span class="nav-text">循环结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-text">关键词</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序结构"><span class="nav-text">程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包"><span class="nav-text">包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-text">类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大括号、段、主体"><span class="nav-text">大括号、段、主体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一维数组"><span class="nav-text">一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明数组"><span class="nav-text">声明数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数组"><span class="nav-text">创建数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组初始化"><span class="nav-text">数组初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组访问"><span class="nav-text">数组访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-text">多维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明数组-1"><span class="nav-text">声明数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数组-1"><span class="nav-text">创建数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组初始化-1"><span class="nav-text">数组初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三讲-面向对象基础"><span class="nav-text">第三讲 面向对象基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四讲-常用类库介绍"><span class="nav-text">第四讲 常用类库介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五讲-断点调试"><span class="nav-text">第五讲 断点调试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六讲-Java异常处理"><span class="nav-text">第六讲 Java异常处理</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GaryCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">149k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">4:31</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

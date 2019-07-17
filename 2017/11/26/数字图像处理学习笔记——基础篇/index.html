@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="数字图像处理技术概念">
+<meta name="keywords" content="c++,算法,数字图像处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字图像处理学习笔记——基础篇">
+<meta property="og:url" content="http://garycao97.github.io/2017/11/26/数字图像处理学习笔记——基础篇/index.html">
+<meta property="og:site_name" content="Gary&#39;s Secret Place">
+<meta property="og:description" content="数字图像处理技术概念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-26T03:19:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数字图像处理学习笔记——基础篇">
+<meta name="twitter:description" content="数字图像处理技术概念">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gary's Secret Place" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://garycao97.github.io/2017/11/26/数字图像处理学习笔记——基础篇/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数字图像处理学习笔记——基础篇 | Gary's Secret Place</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gary's Secret Place</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Gary's Blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/GaryCao97/garycao97.github.io" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://garycao97.github.io/2017/11/26/数字图像处理学习笔记——基础篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GaryCao">
+      <meta itemprop="description" content="即将成为程序猿的大学生一枚">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gary's Secret Place">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数字图像处理学习笔记——基础篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-26 11:19:35" itemprop="dateCreated datePublished" datetime="2017-11-26T11:19:35+08:00">2017-11-26</time>
+            </span>
+          
+
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">31k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">56 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><h1 id="数字图像处理技术概念"><a href="#数字图像处理技术概念" class="headerlink" title="数字图像处理技术概念"></a>数字图像处理技术概念</h1></blockquote>
+<a id="more"></a>
+<ol>
+<li>图像<br>图像是人类获取视觉信息的重要手段。<br>“图”，就是物体投射或反射光的分布；“像”是人的视觉系统接收视觉信息而在人的大脑中形成的印象或认识。<br>前者是客观存在的，而后者是人的感觉，图像应是两者的结合，即图像是对客观存在的物体的一种相似性的、生动的写真或描述。<br>图像分为三类：<br>1)可见图像：全部人眼可见（可接收到）的图像，包含了客观存在的光学图像和人类用各种不同方法人工生成的图像。<br>2)不可见物理图像：各种可测到（客观存在) 的物理特征量的空间分别所构成的一大类图像。<br>3)数学图像：抽象的数学图像，即用数学函数表达的图像，包括连续型和离散型。</li>
+<li>图像处理技术<br>图像处理技术分为模拟图像处理和数字图像处理。模拟图像处理包括光学处理（利用透镜）和电子处理，如照相、电视信号处理等，其速度快，可并行处理，但精度和灵活性差。<br>因此产生数字图像处理，它利用数字计算机或其他高速、大规模集成数字硬件，对图像信息转换来的数字电信号进行某些数字运算或处理，以期提高图像质量或达到人们所需要求的某些预期结果。<br>数字图像处理的主要特点是图像信息量大、图像处理技术综合性强、图像信息理论与通信理论密切相关。<br>数字图像处理技术的基本应用：图像增强/恢复；艺术级效果；医学可视化；工业检验；法律执行；人机交互。<br>数字处理图像在生物医学 、遥感 、工业 、军事、通信、公安等领域有着广泛的应用。</li>
+<li>图像处理的内容<br>图像信息的获取；<br>图像信息的存贮；<br>图像信息的传送；<br>图像信息处理；<br>图像信息的输出和显示。</li>
+<li>图像的数字化<br>由一幅模拟图像获取一幅满足需求的数字图像，使图像便于计算机处理、分析。</li>
+<li>图像感知和获取<br>图像形成模型在特定坐标(x,y)处，通过传感器转换获得的f值为一正的标量。<br>函数f(x,y)由：①入射到观察场景的光源总量； ②场景中物体反射光的总量 组成。</li>
+<li>图像取样和量化<br>获取图像的目标是从感知的数据中产生数字图像，但是传感器的输出是连续的电压波形，因此需要把连续的感知数据转换为数字形式。这一过程由图像的取样与量化来完成。数字化坐标值称为取样；数字化幅度值称为量化。图像的取样率：单位距离的取样数目（在两个空间方向上）。<br>步骤可以分为：模拟图像信号=&gt;空间采样=&gt;灰度级(强度)量化<br>坐标的数字化称为采样，幅度值的数字化称为量化。</li>
+<li>数字图像的表示<br>由矩阵表示，矩阵的每个元素表示为图像的一个像素。</li>
+<li>空间和灰度分辨率<br>空间分辨率是指图像中可分辨的最小细节，主要由采样间隔值决定。采样间隔值越小，空间分辨率越高<br>灰度分辨率是指灰度级别中可辨别的最小变化，通常也把灰度级L称为灰度分辨率，一般情况L=2k，灰度级为L的图像一般也称为k位图像</li>
+<li>相邻像素<br>处于4邻域、对角邻域、8邻域的像素</li>
+<li>邻接性<br>像素的相邻仅说明了两个像素在位置上的关系，若再加上取值相同或相近，则称两个像素邻接。<br>令V是用于定义邻接性的灰度值集合（相似性准则），存在三种类型的邻接性：<br>(1)4邻接:若像素p和q的灰度值均属于V中的元素，且q在N4(p)中，则p和q是4邻接的；<br>(2)8邻接:若像素p和q的灰度值均属于V中的元素，且q在N8(p)集中,则p和q是8邻接的；<br>(3)m邻接(混合邻接):若像素p和q的灰度值均属于V中的元素，{①q在N4(p)中,或者②q在ND(p)中}且{集合N4(p)∩N4(q)没有V值的像素},则具有V值的像素p和q是m邻接的。m邻接可以消除8邻接所带来的（通路）二义性。</li>
+<li>通路<br>像素$p(x_0,y_0)$到像素$q(x_n,y_n)$的通路定义为特定的像素序列：$(x_0,y_0),(x_1,y_1), (x_2,y_2) …,(x_n,y_n), st.(x_i,y_i)$和$(x_(i-1),y_(i-1))$(对于1≤i≤n)是邻接的。n是通路的长度。若$(x_0,y_0)=(x_n,y_n)$,则通路是闭合通路。</li>
+<li>连通性<br>若S是图像中的一个象素子集，对任意的p,q∈S，如果存在一条由S中像素组成的从p到q的通路，则称p在图像集S中与q连通。<br>如果S中仅有一个连通分量，则S叫连通集；<br>所有属于S的连通到某一点p的像素点的集合被称为连通分量。</li>
+<li>区域<br>R是图像中的像素子集，如果R是连通集，则称R为一个区域；两个区域，如果联合（并）为一个区域，则称这两个区域为邻接区域。①定义区域时，必须指明灰度相似性准则V={ }；②定义邻接区域时，还必须指明邻接类型；</li>
+<li>边界<br>假设一副图像S中有K个不连接区域，且它们都不接触图像边界。前景就是所有连通分量的并集；背景就是图像出去前景的剩余像素；内边界就是一个区域的边缘或轮廓线。（即：该区域中和其背景相邻接的点的集合）</li>
+<li>距离<br>像素的距离一共有四种定义方式：<br>1)欧氏距离 = $\sqrt{(x-s)^2+(y-t)^2}$；<br>2)D4(城市街区距离)距离 = $|x-s|+|y-t|$；<br>3)D8(棋盘距离)距离 = $max⁡(|x-s|,|y-t|)$；<br>4)Dm距离：用点间最短的通路定义。</li>
+</ol>
+<blockquote class="blockquote-center"><h1 id="数字图像处理基本操作"><a href="#数字图像处理基本操作" class="headerlink" title="数字图像处理基本操作"></a>数字图像处理基本操作</h1></blockquote>
+
+<h2 id="VisualStudio图片打开与保存"><a href="#VisualStudio图片打开与保存" class="headerlink" title="VisualStudio图片打开与保存"></a>VisualStudio图片打开与保存</h2><h3 id="1-打开"><a href="#1-打开" class="headerlink" title="1.打开"></a>1.打开</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">CString strFilter;</span><br><span class="line">CSimpleArray&lt;GUID&gt;  aguidFileTypes;</span><br><span class="line">HRESULT hResult;</span><br><span class="line"><span class="comment">// 获取CImage支持的图像文件的过滤字符串</span></span><br><span class="line">hResult = m_sImage.GetExporterFilterString(strFilter, aguidFileTypes, _T(<span class="string">"All Image Files"</span>));</span><br><span class="line"><span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">&#123;</span><br><span class="line">	AfxMessageBox(_T(<span class="string">"GetExporterFilter函数失败!"</span>));</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 生成打开图像文件的对话框</span></span><br><span class="line"><span class="function">CFileDialog <span class="title">dlg</span><span class="params">(TRUE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, OFN_FILEMUSTEXIST, strFilter)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line"><span class="comment">// 清楚之前打开的图像文件</span></span><br><span class="line">m_sImage.Destroy();</span><br><span class="line">m_rImage.Destroy();</span><br><span class="line"><span class="comment">// 将外部图像文件装载到CImage对象中</span></span><br><span class="line">hResult = m_sImage.Load(dlg.GetPathName());</span><br><span class="line"><span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">&#123;</span><br><span class="line">	AfxMessageBox(_T(<span class="string">"图像文件加载失败！"</span>));</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (m_sImage.GetBPP() != <span class="number">24</span>)</span><br><span class="line">&#123;</span><br><span class="line">	m_sImage.Destroy();</span><br><span class="line">	AfxMessageBox(_T(<span class="string">"只处理24位色图像！"</span>));</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">bFileIsOpen = <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// 设置主窗口标题栏内容</span></span><br><span class="line">CString str;</span><br><span class="line">str.LoadString(AFX_IDS_APP_TITLE);</span><br><span class="line">AfxGetMainWnd()-&gt;SetWindowText(str + <span class="string">" - "</span> + dlg.GetFileName());</span><br><span class="line">InvalidateRect(<span class="literal">NULL</span>, <span class="literal">NULL</span>, FALSE);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-保存"><a href="#2-保存" class="headerlink" title="2.保存"></a>2.保存</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (m_rImage.IsNull()) &#123;</span><br><span class="line">	AfxMessageBox(_T(<span class="string">"你还没有生成一个要保存的图像文件！"</span>));</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">CString strFilter;</span><br><span class="line">strFilter = <span class="string">"位图文件|*.bmp|JPEG 图像文件|*.jpg|GIF 图像文件|*.gif|PNG 图像文件|*.png||"</span>;</span><br><span class="line"><span class="function">CFileDialog <span class="title">dlg</span><span class="params">(FALSE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, strFilter)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line"><span class="comment">// 如果用户没有指定文件扩展名，则为其添加一个</span></span><br><span class="line">CString strFileName = dlg.GetPathName();</span><br><span class="line">CString strExtension = dlg.GetFileExt();</span><br><span class="line"><span class="keyword">if</span> (strExtension.IsEmpty())</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span> (dlg.m_ofn.nFilterIndex)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		strExtension = <span class="string">"bmp"</span>; <span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		strExtension = <span class="string">"jpg"</span>; <span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		strExtension = <span class="string">"gif"</span>; <span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">		strExtension = <span class="string">"png"</span>; <span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	strFileName = strFileName + _T(<span class="string">"."</span>) + strExtension;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 图像保存</span></span><br><span class="line">HRESULT hResult = m_rImage.Save(strFileName);</span><br><span class="line"><span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">&#123;</span><br><span class="line">	AfxMessageBox(_T(<span class="string">"保存图像文件失败！"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图像文件基本处理"><a href="#图像文件基本处理" class="headerlink" title="图像文件基本处理"></a>图像文件基本处理</h2><h3 id="1-图像文件信息读取"><a href="#1-图像文件信息读取" class="headerlink" title="1.图像文件信息读取"></a>1.图像文件信息读取</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图像打开判断</span></span><br><span class="line"><span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">&#123;</span><br><span class="line">	AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 图像属性</span></span><br><span class="line"><span class="keyword">int</span> x, y;</span><br><span class="line"><span class="keyword">int</span> nRows = m_sImage.GetHeight(); <span class="comment">// 图像像素行数 即图像高度</span></span><br><span class="line"><span class="keyword">int</span> nCols = m_sImage.GetWidth(); <span class="comment">// 图像像素列数 即图像宽度</span></span><br><span class="line"><span class="keyword">int</span> nBPP = m_sImage.GetBPP(); <span class="comment">// 图像颜色位数</span></span><br><span class="line"><span class="comment">// 清空并创建目标图像</span></span><br><span class="line">m_rImage.Destroy();</span><br><span class="line"><span class="keyword">if</span> (!m_rImage.Create(nCols, nRows, nBPP))</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line"><span class="comment">// 读取像素数组（由一维数组储存二维数组）</span></span><br><span class="line">BYTE *sImageData = (BYTE*)m_sImage.GetBits(); <span class="comment">// 原图像的像素数组</span></span><br><span class="line">BYTE *rImageData = (BYTE*)m_rImage.GetBits(); <span class="comment">// 目标图像的像素数组</span></span><br><span class="line"><span class="keyword">int</span> nRowBytes = m_sImage.GetPitch(); <span class="comment">// 原图像的像素数组每行长度</span></span><br><span class="line"><span class="keyword">int</span> nLineBytes = m_rImage.GetPitch(); <span class="comment">// 目标图像的像素数组每行长度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-图像缩小"><a href="#2-图像缩小" class="headerlink" title="2.图像缩小"></a>2.图像缩小</h3><p>行、列的删除</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 缩小n倍</span></span><br><span class="line"><span class="keyword">if</span> (!m_rImage.Create(nCols/n, nRows/n, nBPP))</span><br><span class="line">	<span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-图像放大"><a href="#3-图像放大" class="headerlink" title="3.图像放大"></a>3.图像放大</h3><h4 id="1-最近邻域内插法"><a href="#1-最近邻域内插法" class="headerlink" title="1)最近邻域内插法"></a>1)最近邻域内插法</h4><p>在原图像上寻找最靠近的像素并把它的灰度值赋给栅格上的新像素。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnNearestInterpolationScaling()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line"></span><br><span class="line">	CDialogScalingFactor mdlg;</span><br><span class="line">	<span class="keyword">if</span> (mdlg.DoModal() != IDOK)   <span class="comment">//输入水平和垂直方向放大系数</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (mdlg.mHoriScalingFactor &lt; <span class="number">0</span> || mdlg.mVeriScalingFactor &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"缩放参数错误！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sWidth = m_sImage.GetWidth();  <span class="comment">//原始图像宽度</span></span><br><span class="line">	<span class="keyword">int</span> sHeight = m_sImage.GetHeight(); <span class="comment">//原始图像高度</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> rWidth = (<span class="keyword">int</span>)(sWidth * mdlg.mHoriScalingFactor + <span class="number">0.5</span>);  <span class="comment">//目标图像宽度</span></span><br><span class="line">	<span class="keyword">int</span> rHeight = (<span class="keyword">int</span>)(sHeight * mdlg.mVeriScalingFactor + <span class="number">0.5</span>);<span class="comment">//目标图像高度</span></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(rWidth, rHeight, m_sImage.GetBPP(), <span class="number">0</span>))</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line">	<span class="keyword">int</span> rRowBytes = m_rImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">1</span>; y &lt; rHeight - <span class="number">1</span>; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">1</span>; x &lt; rWidth - <span class="number">1</span>; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> i = (<span class="keyword">int</span>)(x / mdlg.mHoriScalingFactor);</span><br><span class="line">			<span class="keyword">int</span> j = (<span class="keyword">int</span>)(y / mdlg.mVeriScalingFactor);</span><br><span class="line">			rImageData[y*rRowBytes + x * <span class="number">3</span>] = sImageData[j * sRowBytes + i * <span class="number">3</span>];</span><br><span class="line">			rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = sImageData[j * sRowBytes + i * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">			rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = sImageData[j * sRowBytes + i * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>); <span class="comment">// 强制调用OnDraw</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-双线性内插法"><a href="#2-双线性内插法" class="headerlink" title="2)双线性内插法"></a>2)双线性内插法</h4><p>通过公式计算新像素的灰度值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnBilinearInterpolationScaling()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line"></span><br><span class="line">	CDialogScalingFactor mdlg;</span><br><span class="line">	<span class="keyword">if</span> (mdlg.DoModal() != IDOK)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (mdlg.mHoriScalingFactor &lt; <span class="number">0</span> || mdlg.mVeriScalingFactor &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"缩放参数错误！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sWidth = m_sImage.GetWidth();</span><br><span class="line">	<span class="keyword">int</span> sHeight = m_sImage.GetHeight();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> rWidth = (<span class="keyword">int</span>)(sWidth * mdlg.mHoriScalingFactor + <span class="number">0.5</span>);</span><br><span class="line">	<span class="keyword">int</span> rHeight = (<span class="keyword">int</span>)(sHeight * mdlg.mVeriScalingFactor + <span class="number">0.5</span>);</span><br><span class="line"></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(rWidth, rHeight, m_sImage.GetBPP(), <span class="number">0</span>))</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line">	<span class="keyword">int</span> rRowBytes = m_rImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">1</span>; y &lt; rHeight - <span class="number">1</span>; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">1</span>; x &lt; rWidth - <span class="number">1</span>; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> u = x / mdlg.mHoriScalingFactor;</span><br><span class="line">			<span class="keyword">double</span> v = y / mdlg.mVeriScalingFactor;</span><br><span class="line">			<span class="keyword">int</span> i = (<span class="keyword">int</span>)u;</span><br><span class="line">			<span class="keyword">int</span> j = (<span class="keyword">int</span>)v;</span><br><span class="line">			u = u - i;</span><br><span class="line">			v = v - j;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> ((i &gt;= sWidth - <span class="number">1</span>) &amp;&amp; (j &gt;= sHeight - <span class="number">1</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span>] = sImageData[(sHeight - <span class="number">1</span>) * sRowBytes + (sWidth - <span class="number">1</span>) * <span class="number">3</span>];</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = sImageData[(sHeight - <span class="number">1</span>) * sRowBytes + (sWidth - <span class="number">1</span>) * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = sImageData[(sHeight - <span class="number">1</span>) * sRowBytes + (sWidth - <span class="number">1</span>) * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (j &gt;= sHeight - <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				*(rImageData + y*rRowBytes + x * <span class="number">3</span>) = sImageData[(sHeight - <span class="number">1</span>) * sRowBytes + i * <span class="number">3</span>];</span><br><span class="line">				*(rImageData + y*rRowBytes + x * <span class="number">3</span> + <span class="number">1</span>) = sImageData[(sHeight - <span class="number">1</span>) * sRowBytes + i * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">				*(rImageData + y*rRowBytes + x * <span class="number">3</span> + <span class="number">2</span>) = sImageData[(sHeight - <span class="number">1</span>) * sRowBytes + i * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (i &gt;= sWidth - <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span>] = sImageData[j * sRowBytes + (sWidth - <span class="number">1</span>) * <span class="number">3</span>];</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = sImageData[j * sRowBytes + (sWidth - <span class="number">1</span>) * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = sImageData[j * sRowBytes + (sWidth - <span class="number">1</span>) * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span>] = (BYTE)((<span class="number">1</span> - u)*(<span class="number">1</span> - v)*(sImageData[j * sRowBytes + i * <span class="number">3</span>])</span><br><span class="line">					+ (<span class="number">1</span> - u)*v*(sImageData[(j + <span class="number">1</span>)*sRowBytes + i * <span class="number">3</span>])</span><br><span class="line">					+ u*(<span class="number">1</span> - v)*(sImageData[j*sRowBytes + (i + <span class="number">1</span>) * <span class="number">3</span>])</span><br><span class="line">					+ u*v*(sImageData[(j + <span class="number">1</span>)*sRowBytes + (i + <span class="number">1</span>) * <span class="number">3</span>]));</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = (BYTE)((<span class="number">1</span> - u)*(<span class="number">1</span> - v)*(sImageData[j * sRowBytes + i * <span class="number">3</span> + <span class="number">1</span>])</span><br><span class="line">					+ (<span class="number">1</span> - u)*v*(sImageData[(j + <span class="number">1</span>)*sRowBytes + i * <span class="number">3</span> + <span class="number">1</span>])</span><br><span class="line">					+ u*(<span class="number">1</span> - v)*(sImageData[j*sRowBytes + (i + <span class="number">1</span>) * <span class="number">3</span> + <span class="number">1</span>])</span><br><span class="line">					+ u*v*(sImageData[(j + <span class="number">1</span>)*sRowBytes + (i + <span class="number">1</span>) * <span class="number">3</span> + <span class="number">1</span>]));</span><br><span class="line">				rImageData[y*rRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = (BYTE)((<span class="number">1</span> - u)*(<span class="number">1</span> - v)*(sImageData[j * sRowBytes + i * <span class="number">3</span> + <span class="number">2</span>])</span><br><span class="line">					+ (<span class="number">1</span> - u)*v*(sImageData[(j + <span class="number">1</span>)*sRowBytes + i * <span class="number">3</span> + <span class="number">2</span>])</span><br><span class="line">					+ u*(<span class="number">1</span> - v)*(sImageData[j*sRowBytes + (i + <span class="number">1</span>) * <span class="number">3</span> + <span class="number">2</span>])</span><br><span class="line">					+ u*v*(sImageData[(j + <span class="number">1</span>)*sRowBytes + (i + <span class="number">1</span>) * <span class="number">3</span> + <span class="number">2</span>]));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>); <span class="comment">// 强制调用OnDraw</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数字图像基本操作"><a href="#数字图像基本操作" class="headerlink" title="数字图像基本操作"></a>数字图像基本操作</h2><h3 id="1-算数操作"><a href="#1-算数操作" class="headerlink" title="1.算数操作"></a>1.算数操作</h3><p>算术运算只涉及一个空间位置（象素）的运算；<br>算术运算在相同大小的图像之间进行；</p>
+<h4 id="1-加"><a href="#1-加" class="headerlink" title="1)加"></a>1)加</h4><p>作用：去除“叠加性”噪音；图像叠加。<br>定义：g(x,y) = f(x,y) + h(x,y)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnImageAdd()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CImage lsImage;</span><br><span class="line">	CString strFilter;</span><br><span class="line">	CSimpleArray&lt;GUID&gt;  aguidFileTypes;</span><br><span class="line">	HRESULT hResult;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取CImage支持的图像文件的过滤字符串</span></span><br><span class="line">	hResult = m_sImage.GetExporterFilterString(strFilter, aguidFileTypes, _T(<span class="string">"All Image Files"</span>));</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"GetExporterFilter函数失败!"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">CFileDialog <span class="title">dlg</span><span class="params">(TRUE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, OFN_FILEMUSTEXIST, strFilter)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将外部图像文件装载到CImage对象中</span></span><br><span class="line">	hResult = lsImage.Load(dlg.GetPathName());</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"图像文件加载失败！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsImage.GetBPP() != <span class="number">24</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"只处理24位色图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((lsImage.GetHeight() != m_sImage.GetHeight()) || (lsImage.GetWidth() != m_sImage.GetWidth()))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"本软件只处理相同大小图像的逻辑与代数运算！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CDialogImageAddRatio mdlg;</span><br><span class="line">	<span class="keyword">if</span> (mdlg.DoModal() != IDOK)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">double</span> lambuda = mdlg.addRatio / <span class="number">100.0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> nRows = m_sImage.GetHeight();</span><br><span class="line">	<span class="keyword">int</span> nCols = m_sImage.GetWidth();</span><br><span class="line">	<span class="keyword">int</span> nBPP = m_sImage.GetBPP();</span><br><span class="line"></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(nCols, nRows, nBPP))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *lsImageData = (BYTE *)lsImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line">	<span class="keyword">int</span> nRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; nRows; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; nCols; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] = (<span class="keyword">int</span>)(lambuda * sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] + (<span class="number">1</span> - lambuda) * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>]);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = (<span class="keyword">int</span>)(lambuda * sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] + (<span class="number">1</span> - lambuda) * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>]);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = (<span class="keyword">int</span>)(lambuda * sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] + (<span class="number">1</span> - lambuda) * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>]);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-减"><a href="#2-减" class="headerlink" title="2)减"></a>2)减</h4><p>作用：去除不需要的叠加性图案；检测两幅图像之间的差别；计算物体边界的梯度（差分运算）；<br>定义：g(x,y) = f(x,y) - h(x,y)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnImageSub()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CImage lsImage;</span><br><span class="line">	CString strFilter;</span><br><span class="line">	CSimpleArray&lt;GUID&gt;  aguidFileTypes;</span><br><span class="line">	HRESULT hResult;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取CImage支持的图像文件的过滤字符串</span></span><br><span class="line">	hResult = m_sImage.GetExporterFilterString(strFilter, aguidFileTypes, _T(<span class="string">"All Image Files"</span>));</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"GetExporterFilter函数失败!"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">CFileDialog <span class="title">dlg</span><span class="params">(TRUE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, OFN_FILEMUSTEXIST, strFilter)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将外部图像文件装载到CImage对象中</span></span><br><span class="line">	hResult = lsImage.Load(dlg.GetPathName());</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"图像文件加载失败！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsImage.GetBPP() != <span class="number">24</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"只处理24位色图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((lsImage.GetHeight() != m_sImage.GetHeight()) || (lsImage.GetWidth() != m_sImage.GetWidth()))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"本软件只处理相同大小图像的逻辑与代数运算！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CDialogImageAddRatio mdlg;</span><br><span class="line">	<span class="keyword">if</span> (mdlg.DoModal() != IDOK)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">double</span> lambuda = mdlg.addRatio / <span class="number">100.0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> nRows = m_sImage.GetHeight();</span><br><span class="line">	<span class="keyword">int</span> nCols = m_sImage.GetWidth();</span><br><span class="line">	<span class="keyword">int</span> nBPP = m_sImage.GetBPP();</span><br><span class="line"></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(nCols, nRows, nBPP))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *lsImageData = (BYTE *)lsImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line">	<span class="keyword">int</span> nRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line">	<span class="keyword">int</span> nrgb;</span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; nRows; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; nCols; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(lambuda * sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] - (<span class="number">1</span> - lambuda) * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>]);</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] = nrgb;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(lambuda * sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] - (<span class="number">1</span> - lambuda) * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>]);</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = nrgb;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(lambuda * sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] - (<span class="number">1</span> - lambuda) * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>]);</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = nrgb;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-乘"><a href="#3-乘" class="headerlink" title="3)乘"></a>3)乘</h4><p>作用：图象的局部显示（用二值模板图像与原图像做乘法）<br>定义：g(x,y) = f(x,y) × h(x,y)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnImageMul()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CImage lsImage;</span><br><span class="line">	CString strFilter;</span><br><span class="line">	CSimpleArray&lt;GUID&gt;  aguidFileTypes;</span><br><span class="line">	HRESULT hResult;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取CImage支持的图像文件的过滤字符串</span></span><br><span class="line">	hResult = m_sImage.GetExporterFilterString(strFilter, aguidFileTypes, _T(<span class="string">"All Image Files"</span>));</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"GetExporterFilter函数失败!"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">CFileDialog <span class="title">dlg</span><span class="params">(TRUE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, OFN_FILEMUSTEXIST, strFilter)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将外部图像文件装载到CImage对象中</span></span><br><span class="line">	hResult = lsImage.Load(dlg.GetPathName());</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"图像文件加载失败！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsImage.GetBPP() != <span class="number">24</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"只处理24位色图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((lsImage.GetHeight() != m_sImage.GetHeight()) || (lsImage.GetWidth() != m_sImage.GetWidth()))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"本软件只处理相同大小图像的逻辑与代数运算！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> nRows = m_sImage.GetHeight();</span><br><span class="line">	<span class="keyword">int</span> nCols = m_sImage.GetWidth();</span><br><span class="line">	<span class="keyword">int</span> nBPP = m_sImage.GetBPP();</span><br><span class="line"></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(nCols, nRows, nBPP))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *lsImageData = (BYTE *)lsImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line">	<span class="keyword">int</span> nRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line">	<span class="keyword">int</span> nrgb;</span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; nRows; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; nCols; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>]);</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] = nrgb;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>]);</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = nrgb;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] * lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>]);</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = nrgb;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-除"><a href="#4-除" class="headerlink" title="4)除"></a>4)除</h4><p>作用：增强两幅图像的差异。<br>定义：g(x,y) = f(x,y) ÷ h(x,y)<br>实际运算是将一幅图像取反后乘上另一幅图像</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnImageDiv()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CImage lsImage;</span><br><span class="line">	CString strFilter;</span><br><span class="line">	CSimpleArray&lt;GUID&gt;  aguidFileTypes;</span><br><span class="line">	HRESULT hResult;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取CImage支持的图像文件的过滤字符串</span></span><br><span class="line">	hResult = m_sImage.GetExporterFilterString(strFilter, aguidFileTypes, _T(<span class="string">"All Image Files"</span>));</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"GetExporterFilter函数失败!"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">CFileDialog <span class="title">dlg</span><span class="params">(TRUE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, OFN_FILEMUSTEXIST, strFilter)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将外部图像文件装载到CImage对象中</span></span><br><span class="line">	hResult = lsImage.Load(dlg.GetPathName());</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"图像文件加载失败！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsImage.GetBPP() != <span class="number">24</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"只处理24位色图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((lsImage.GetHeight() != m_sImage.GetHeight()) || (lsImage.GetWidth() != m_sImage.GetWidth()))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"本软件只处理相同大小图像的逻辑与代数运算！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> nRows = m_sImage.GetHeight();</span><br><span class="line">	<span class="keyword">int</span> nCols = m_sImage.GetWidth();</span><br><span class="line">	<span class="keyword">int</span> nBPP = m_sImage.GetBPP();</span><br><span class="line"></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(nCols, nRows, nBPP))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *lsImageData = (BYTE *)lsImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line">	<span class="keyword">int</span> nRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">double</span> alpha = <span class="number">0.0001</span>;</span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line">	<span class="keyword">int</span> nrgb;</span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; nRows; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; nCols; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] / (lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] + alpha));</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] = nrgb;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] / (lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] + alpha));</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = nrgb;</span><br><span class="line">			nrgb = (<span class="keyword">int</span>)(sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] / (lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] + alpha));</span><br><span class="line">			nrgb = (nrgb &lt; <span class="number">0</span>) ? <span class="number">0</span> : ((nrgb&gt;<span class="number">255</span>) ? <span class="number">255</span> : nrgb);</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = nrgb;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-逻辑操作"><a href="#2-逻辑操作" class="headerlink" title="2.逻辑操作"></a>2.逻辑操作</h3><p>在逻辑运算中，象素灰度值作为二进制串处理<br>“与”、“或”操作可用来从一幅图像中提取子图像。</p>
+<h4 id="1-与-amp"><a href="#1-与-amp" class="headerlink" title="1)与(&amp;)"></a>1)与(&amp;)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnImageAnd()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CImage lsImage;</span><br><span class="line">	CString strFilter;</span><br><span class="line">	CSimpleArray&lt;GUID&gt;  aguidFileTypes;</span><br><span class="line">	HRESULT hResult;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取CImage支持的图像文件的过滤字符串</span></span><br><span class="line">	hResult = m_sImage.GetExporterFilterString(strFilter, aguidFileTypes, _T(<span class="string">"All Image Files"</span>));</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"GetExporterFilter函数失败!"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">CFileDialog <span class="title">dlg</span><span class="params">(TRUE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, OFN_FILEMUSTEXIST, strFilter)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将外部图像文件装载到CImage对象中</span></span><br><span class="line">	hResult = lsImage.Load(dlg.GetPathName());</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"图像文件加载失败！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsImage.GetBPP() != <span class="number">24</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"只处理24位色图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((lsImage.GetHeight() != m_sImage.GetHeight()) || (lsImage.GetWidth() != m_sImage.GetWidth()))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"本软件只处理相同大小图像的逻辑与代数运算！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> nRows = m_sImage.GetHeight();</span><br><span class="line">	<span class="keyword">int</span> nCols = m_sImage.GetWidth();</span><br><span class="line">	<span class="keyword">int</span> nBPP = m_sImage.GetBPP();</span><br><span class="line"></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(nCols, nRows, nBPP))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *lsImageData = (BYTE *)lsImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line">	<span class="keyword">int</span> nRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; nRows; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; nCols; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] = sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] &amp; lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>];</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] &amp; lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] &amp; lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-或"><a href="#2-或" class="headerlink" title="2)或(|)"></a>2)或(|)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> CDigitalImageProcessingDoc::OnImageOr()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="keyword">if</span> (m_sImage.IsNull())</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"请打开要处理的图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	CImage lsImage;</span><br><span class="line">	CString strFilter;</span><br><span class="line">	CSimpleArray&lt;GUID&gt;  aguidFileTypes;</span><br><span class="line">	HRESULT hResult;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取CImage支持的图像文件的过滤字符串</span></span><br><span class="line">	hResult = m_sImage.GetExporterFilterString(strFilter, aguidFileTypes, _T(<span class="string">"All Image Files"</span>));</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"GetExporterFilter函数失败!"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">CFileDialog <span class="title">dlg</span><span class="params">(TRUE, <span class="literal">NULL</span>, <span class="literal">NULL</span>, OFN_FILEMUSTEXIST, strFilter)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (IDOK != dlg.DoModal())</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将外部图像文件装载到CImage对象中</span></span><br><span class="line">	hResult = lsImage.Load(dlg.GetPathName());</span><br><span class="line">	<span class="keyword">if</span> (FAILED(hResult))</span><br><span class="line">	&#123;</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"图像文件加载失败！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsImage.GetBPP() != <span class="number">24</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"只处理24位色图像！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ((lsImage.GetHeight() != m_sImage.GetHeight()) || (lsImage.GetWidth() != m_sImage.GetWidth()))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		AfxMessageBox(_T(<span class="string">"本软件只处理相同大小图像的逻辑与代数运算！"</span>));</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> nRows = m_sImage.GetHeight();</span><br><span class="line">	<span class="keyword">int</span> nCols = m_sImage.GetWidth();</span><br><span class="line">	<span class="keyword">int</span> nBPP = m_sImage.GetBPP();</span><br><span class="line"></span><br><span class="line">	m_rImage.Destroy();</span><br><span class="line">	<span class="keyword">if</span> (!m_rImage.Create(nCols, nRows, nBPP))</span><br><span class="line">	&#123;</span><br><span class="line">		lsImage.Destroy();</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	BYTE *sImageData = (BYTE *)m_sImage.GetBits();</span><br><span class="line">	BYTE *lsImageData = (BYTE *)lsImage.GetBits();</span><br><span class="line">	BYTE *rImageData = (BYTE *)m_rImage.GetBits();</span><br><span class="line">	<span class="keyword">int</span> nRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sRowBytes = m_sImage.GetPitch();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; nRows; y++)</span><br><span class="line">		<span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; nCols; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] = sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>] | lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">0</span>];</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] = sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>] | lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">1</span>];</span><br><span class="line">			rImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] = sImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>] | lsImageData[y * nRowBytes + x * <span class="number">3</span> + <span class="number">2</span>];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	lsImage.Destroy();</span><br><span class="line"></span><br><span class="line">	UpdateAllViews(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-非"><a href="#3-非" class="headerlink" title="3)非(~)"></a>3)非(~)</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-空间处理"><a href="#3-空间处理" class="headerlink" title="3.空间处理"></a>3.空间处理</h3><p>空间操作直接在给定图像的象素上执行</p>
+<h4 id="1-单象素操作"><a href="#1-单象素操作" class="headerlink" title="1)单象素操作"></a>1)单象素操作</h4><p>对图像的每个元素进行统一的函数变换操作<br>说明：$s = T(z)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-邻域操作"><a href="#2-邻域操作" class="headerlink" title="2)邻域操作"></a>2)邻域操作</h4><p>处理后图像像素的灰度值由对应位置的原图像像素邻域的灰度值所确定<br>说明：$s(x,y) = \frac{1}{S_{xy}} \sum_{i,j \in S_{xy}} f(i,j)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-几何空间变换"><a href="#3-几何空间变换" class="headerlink" title="3)几何空间变换"></a>3)几何空间变换</h4><p>几何空间变换（橡皮模变换）要改变图像中象素间的空间关系。<br>几何变换的两个基本操作：坐标的空间变换；灰度内插；<br>说明：$\left[\begin{matrix}x&amp;y&amp;1\\\end{matrix}\right]=\left[\begin{matrix}u&amp;v&amp;1\\\end{matrix}\right] T=\left[\begin{matrix}u&amp;v&amp;1\\\end{matrix}\right]·\left[\begin{matrix}t_1&amp;t_2&amp;0\\t_3&amp;t_4&amp;0\\t_5&amp;t_6&amp;0\\\end{matrix}\right]$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote class="blockquote-center"><h1 id="图像增强（空间域方法）"><a href="#图像增强（空间域方法）" class="headerlink" title="图像增强（空间域方法）"></a>图像增强（空间域方法）</h1></blockquote>
+<p>如果不考虑图像降质的原因，只将图像中感兴趣的特征(如边缘、轮廓、对比度等)进行强调或有选择的突出，同时衰减其它不需要的特征，以便于显示、观察或分析，此种图像处理称为图像增强（Image Enhancement）<br>空间域方法是直接以图像中的像素操作为基础的图像增强方法</p>
+<h2 id="1-灰度变换（强度映射、点处理）"><a href="#1-灰度变换（强度映射、点处理）" class="headerlink" title="1.灰度变换（强度映射、点处理）"></a>1.灰度变换（强度映射、点处理）</h2><p>令$f(x,y)$表示输入图像，$g(x,y)$表示处理之后的输出图像；如邻域大小为像素本身，即输出图像 $g(x,y)$任意点$(x,y)$的灰度值仅依赖于输入图象$f(x,y)$在$(x,y)$像素点的灰度值，则$T[·]$定义的操作被称为灰度级变换函数（又称灰度映射） 。<br>令r和s分别表示输入图像$f(x,y)$和输出图像$g(x,y)$在任意点$(x,y)$的灰度级（值），灰度变换可表示为：$g(x,y)= T[f(x,y)]$ ，<br>即：$s = T(r)$<br><strong>关键：寻找一个合适的变换函数T(r)，根据灰度变换函数T(r)选择方法的不同，灰度变换可分为：直方图处理方法和直接灰度变换。</strong></p>
+<h3 id="1-直接灰度变换："><a href="#1-直接灰度变换：" class="headerlink" title="1)直接灰度变换："></a>1)直接灰度变换：</h3><p>根据问题，直接选择灰度变换函数$s=T(r)$，实现图像增强。主要处理对比度、灰度动态范围等问题。<br>r和s分别是输入图像f (x,y)和输出图像g (x,y)在任意点(x,y)的灰度级。</p>
+<p>常用的变换函数有：<br>（1）线性函数（正比、反比、分段线性函数）<br>（2）对数函数<br>（3）幂律函数（n次幂和n次方根函数）<br>（4）其它特殊非线性函数</p>
+<h4 id="图像反转"><a href="#图像反转" class="headerlink" title="图像反转"></a>图像反转</h4><p>当输入图像的灰度级范围为$[0, L-1]$的图像反转操作可由反比变换获得，表达式为：$s = L-1-r$<br>用这种方式倒转图像的强度产生图像反转的对等图像。这种处理尤其适用于增强嵌入图像暗色区域的白色或灰色细节，特别是当黑色面积占主导地位时。</p>
+<h4 id="对数变换"><a href="#对数变换" class="headerlink" title="对数变换"></a>对数变换</h4><p>$s = c\times log(r+1)$ 其中，c是一个常数，且假定r≥0。<br>对数变换常用于图像的动态范围压缩。与增强对比度相反，有时原图的动态范围太大，超出某些显示设备的允许动态范围，这时直接使用原图，则一部分细节可能丢失。</p>
+<h4 id="幂律（伽马）变换"><a href="#幂律（伽马）变换" class="headerlink" title="幂律（伽马）变换"></a>幂律（伽马）变换</h4><p>幂律变换的基本形式为：$s=c\times r^\gamma$。其中c和γ为正的常数。<br>伽马校正：用于图像获取、打印和显示的各种装置根据幂次规律进行响应。习惯上，幂次等式中的指数是指伽马值，用于修正幂次响应现象的过程称做伽马校正。</p>
+<h4 id="分段线性变换函数"><a href="#分段线性变换函数" class="headerlink" title="分段线性变换函数"></a>分段线性变换函数</h4><p>（1）对比拉伸：低对比度（照明不足、传感器动态范围小）提高图像灰度级的动态范围，改善图像对比度。<br>拐点的位置控制了变换函数的形状，保证变换函数为单值单调。<br>（2）灰度级分层：在图像中突出显示特定范围的灰度级别。<br>（3）位平面分层：可能需要突出显示由特定位对整个图像外观所做的贡献。</p>
+<h3 id="2-直方图处理（直方图均衡化、直方图匹配）"><a href="#2-直方图处理（直方图均衡化、直方图匹配）" class="headerlink" title="2)直方图处理（直方图均衡化、直方图匹配）"></a>2)直方图处理（直方图均衡化、直方图匹配）</h3><p>如果将图像中像素灰度级看成是一个随机变量，则其取值分布情况就反映了图像的统计特性，这一特性可用灰度直方图来描述。<br>灰度级范围为$[0, L-1]$的数字图象的灰度直方图是灰度级的离散函数：$h(r_k)=n_k$<br>式中，$r_k$是第k级灰度值，$n_k$是图像中灰度值为$r_k$的像素的个数，$k=0,1,…, L-1$。<br>灰度直方图是灰度级的函数，它表示图像中具有某种灰度级的像素的个数，反映了图像中每种灰度出现的频率。</p>
+<h4 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h4><p>$p_r(r_k)=\frac{n_k}{n},k=0,1,…,L-1$其中,n 为一幅图像中像素总数,$n_k$是图像中灰度值为$r_k$的像素的个数。灰度直方图归一化处理后，$p(r_k)$可视为图像灰度级$r_k$发生的概率估计值。</p>
+<h4 id="直方图均衡"><a href="#直方图均衡" class="headerlink" title="直方图均衡"></a>直方图均衡</h4><p>所谓直方图均衡化，是指寻找一个灰度变换函数：$s=T(r)$使变换后的图像的像素值占有全部的灰度级并且分布均匀，从而得到一幅灰度级丰富且动态范围大的图像（即高对比度图像）。</p>
+<ol>
+<li>解析证明：<br>假设输入图像的灰度级r为连续量，并被归一化到区间[0, 1]，且r = 0表示黑色，r = 1表示白色。灰度变换函数也为连续函数：$s=T(r),0≤r≤1$<br>也就是说，通过上述变换，每个原始图像的像素灰度值r都对应产生一个s值。由从s到r的反变换可用下式表示：$r=T^(-1)(s),0≤s≤1$<br>变换函数T(r)应满足下列条件：（1）在0≤r≤1区间内，T(r)单值（严格）单调递增；（2）当0≤r≤1时， 0≤T(r)≤1。条件(1)保证了输出图像的灰度级从白到黑的次序不变，并保证 T(r) 的反函数存在；条件(2)则保证了变换后输出灰度级与输入有同样的范围。<br>一幅图像的灰度级可被视为区间[0,1]的随机变量。令$p_r(r)$和$p_s(s)$分别代表随机变量r和s的概率密度函数 。<br>由概率论理论可知，如果已知随机变量ξ的概率密度函数为$p_r(r)$ ，而随机变量η是ξ 的函数，即$η=T(ξ)$，η 的概率密度$p_s(s)$可由$p_r(r)$求出,即：$p_s(s)=p_r(r)|\frac{dr}{ds}|$<br>所以，变换后的图像的灰度级s的概率密度函数$p_s(s)$由输人图像的灰度级r的概率密度函数$p_r(r)$，和所选择的变换函数T(r)决定。<br>变换函数为：$s=T(r)=\int_0^r p_r(ω)dω$<br>式中：ω是积分变量，而$\int_0^r p_r(ω)dω$是r的累积分布函数。累积分布函数是r的函数，并且单值单调地从0增加到1，所以这个变换函数满足关于T(r) 的两个条件。<br>从微积分学(莱布尼茨准则)，我们知道关于上限的定积分的导数就是该上限的积分项，即：$\frac{ds}{dr}=\frac{dT(r)}{dr}=p_r(r)$ ，变换后的图像的灰度级 s 的概率密度函数:$p_s(s)= p_r(r)|\frac{dr}{ds}|=1$</li>
+<li>实现方法：<br>（1）计算输入图像的归一化直方图。<br>一幅图像中灰度级$r_k$出现的概率可近似为：$p_r(r_k)=\frac{n_k}{n},k=0,1,…,L-1$ 式中：L是灰度级的总数目，$n_k$是图像中灰度级为$r_k$的像素的个数，n是图像中像素总数。<br>（2）直方图均衡化灰度变换函数的离散形式为：$s_k=T(r_k)=\sum_{j=0}^kp_r(r_j)=\sum_{j=0}^k \frac{n_j}{n}$<br>（3）经上式变换后的$s_k$取值为小数，在实际中还要对其取整并重新量化，否则，图像整体偏亮：$s_k=int[\frac{L-1}{1-s_min}(s_k-s_min)+0.5]$<br>（4）这样，就完成了由输入图像灰度级到输出图像灰度级的映射变换$r_k-&gt;s_k$。对输入图像中任一像素$(x,y)$,如果其灰度值为：$f(x,y)=r_k$，输出图像的灰度值为$g(x,y)=s_k$</li>
+</ol>
+<h4 id="直方图匹配（规定化）"><a href="#直方图匹配（规定化）" class="headerlink" title="直方图匹配（规定化）"></a>直方图匹配（规定化）</h4><p>处理后的输出图像具有指定的灰度直方图形状，以便能对图像中某种灰度级加以增强，即有选择性的增强某个灰度值范围内的对比度。这种用于使处理后的图像具有指定灰度直方图的增强方法，叫做直方图匹配或直方图规定化处理。</p>
+<!--局部直方图处理
+在图像增强中使用直方图统计-->
+
+<h2 id="2-空间域滤波（模板处理）"><a href="#2-空间域滤波（模板处理）" class="headerlink" title="2.空间域滤波（模板处理）"></a>2.空间域滤波（模板处理）</h2><p>输出图像g(x,y)任意像素(x,y)的灰度值为输入图像f(x,y)事先定义的<em>(x,y)邻域</em>内所有像素灰度值的某种函数，即：$g(x,y)= T[f(x,y)]$</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ol>
+<li><strong>像素(x,y)的邻域(neighborhood)</strong><br>是以（x,y）像素为中心的正方形或矩形子图像（如3×3），也可以定义为圆形或其他形状的邻域（但矩形邻域操作方便，多被采用）。</li>
+<li><strong>模板运算</strong><br>模板又称滤波器、核、掩模、窗口等，是一个小的二维阵列，模板的系数值决定了增强处理的性质，如平滑、锐化等，这种增强方法又称空间域滤波。<br>主要步骤为：<br>1）将模板在图中漫游，并将模板中心与图中某个象素位置重合；<br>2）将模板上系数与模板下对应象素相乘；<br>3）将所有乘积相加；<br>4）将和（模板的输出响应）赋给图中对应模板中心位置的象素。<br>注意: 定义模板时一定指明模板中心。<br>图像边界处理方法：忽略图像边界数据；另一种方法是在图像四周复制原图像边界像素的值，或补上必需数量的像素灰度值为零的行和列，从而使卷积核悬挂在原图像四周时可以进行正常的计算。</li>
+</ol>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="平滑空间滤波器"><a href="#平滑空间滤波器" class="headerlink" title="平滑空间滤波器"></a>平滑空间滤波器</h4><p>平滑滤波器用于模糊处理和减小噪声。常见的平滑处理应用就是减噪。然而，由于图像边缘也是由图像灰度尖锐变化带来的特性，所以平滑滤波处理存在着边缘模糊的负面效应。平滑滤波器能减弱或消除图像的高频分量，因为高频分量对应图像中的区域边缘等灰度值变化较大、较快的部分，滤波器将这些分量滤除，从而使图像平滑。</p>
+<ol>
+<li><strong>均值滤波器</strong>：邻域平均滤波器的输出(响应)是包含在滤波掩模邻域内像素的简单平均值。因此，这些滤波器也称为均值滤波器，是一种低通滤波器。还可以在模板中引入了加权系数，以区分邻域中不同位置像素对输出像素值的影响，常称其为加权模板。</li>
+<li><strong>统计排序滤波器</strong>：统计滤波器是一种非线性的空间滤波器，它的响应基于滤波器模板包围的图像区域中像素的排序，然后由统计排序结果决定的值代替中心像素的值。统计滤波器中最常见的例子就是中值滤波器，它是将像素邻域内灰度的中值代替该像素的值。中值滤波器对处理脉冲噪声(也称为椒盐噪声，以黑白点叠加在图像上)非常有效。但是对一些细节多，特别是点、线、尖顶细节多的图像不宜采用中值滤波。中值滤波是一种非线性滤波器。</li>
+</ol>
+<h4 id="锐化空间滤波器"><a href="#锐化空间滤波器" class="headerlink" title="锐化空间滤波器"></a>锐化空间滤波器</h4><p>锐化处理的主要目的是突出灰度的过渡部分，增强图像中的细节。空间域像素邻域平均法可以使图像变模糊，而均值处理与积分相类似，从逻辑角度我们可以断定，锐化处理可以用空间微分（差分）来完成。<br>微分（差分）算子的响应强度与图像在该点灰度的突变程度有关，图像微分增强了边缘和其他突变(如噪声)并削弱了灰度变化缓慢的区域。<br>然而由于边缘和轮廓在一幅图像中常常具有任意方向，而差分运算是有方向性的，因此和差分方向一致的边缘和轮廓便检测不出来，因而希望采用一些各向同性的检测算子，它们对任意方向的边缘和轮廓都有相同的检测能力。<br>要注意的是，能够进行锐化处理的图像必须有较高的信噪比，否则，图像锐化后，信噪比会更低，因为锐化会提升噪声强度。一般是先去噪，再锐化操作。<br>一阶微分处理通常会产生较宽的边缘；<br>二阶微分处理对细节有较强的响应，如细线和孤立点；<br>一阶微分处理一般对灰度阶梯有较强的响应；<br>二阶微分处理对灰度级阶梯变化产生双响应。<br>二阶微分在图像中灰度值变化相似时，对线的响应要比对阶梯强，且点比线响应强。<br>大多数应用中，对图像增强来说，二阶微分处理比一阶微分好一些，因为形成增强细节的能力好一些。由于这一原因及实现和扩展都简单，对图像增强多应用二阶微分处理。<br>1）<strong>拉普拉斯算子</strong>：拉普拉斯算子是常用的边缘增强算子，拉普拉斯运算也是偏导数运算的线性组合运算，而且是一种各向同性（旋转不变性）的线性运算。拉普拉斯算子为：$∇^2 f=\frac{∂^2 f}{∂x^2}+\frac{∂^2 f}{∂y^2}=[f(x+1,y)+f(x-1,y)+f(x,y+1)+f(x,y-1)]-4f(x,y)$<br>由于拉普拉斯是一种微分算子，它的应用强调图像中灰度的突变及衰减灰度慢变化区域的灰度，这将产生一幅把图像中的浅灰色边线和突变点叠加到暗背景中的图像。将原始图像和拉普拉斯图像叠加在一起的简单方法可以保护拉普拉斯锐化处理的效果，同时又能复原背景信息。<br>2）<strong>非锐化掩蔽和高升滤波</strong>：非锐化掩蔽：从原图像中减去其非锐化（平滑过的）图像的过程（下式k =1时），步骤：模糊原图像；从原图像中减去模糊图像（产生的差值图像称为模板）；将模板加到原图像上。高提升滤波：下式k&gt;1时。<br>式子为：$g_{mask}(x,y)=f(x,y)-f(x,y),g(x,y)=f(x,y)+k\times g_{mask}(x,y)$<br>3）<strong>梯度算子</strong>：$∇f=grad(f)=\left[\begin{matrix}g_x\\g_y\end{matrix}\right]=\left[\begin{matrix}\frac{∂f}{∂x}\frac{∂f}{∂y}\end{matrix}\right]=\left[\begin{matrix}f(x+1,y)-f(x,y)\\f(x,y+1)-f(x,y))\end{matrix}\right]$<br>一般把梯度矢量的模值称为<strong>梯度</strong>，$M(x,y)=\sqrt{(g_x^2+g_y^2)}≈|g_x|+|g_y|$<br><strong>像素模板</strong>：$\left[\begin{matrix}z_1&amp;z_2&amp;z_3\\z_4&amp;z_5&amp;z_6\\z_7&amp;z_8&amp;z_9\end{matrix}\right]$<br><strong>水平垂直差分法</strong>：$\begin{cases}g_x=z_8-z_5\\g_y=z_6-z_5\end{cases}$<br><strong>罗伯特梯度法</strong>：$\begin{cases}g_x=z_8-z_6\\g_y=z_9-z_5\end{cases}$<br><strong>Sobel算子</strong>：$\begin{cases}g_x=(z_7+2z_8+z_9)-(z_1+2z_2+z_3)\\g_y=(z_3+2z_6+z_9)-(z_1+2z_4+z_7)\end{cases}$<br><strong>※寻找一个合适的模板（滤波核）</strong></p>
+<blockquote class="blockquote-center"><h1 id="图像增强（频率域方法）"><a href="#图像增强（频率域方法）" class="headerlink" title="图像增强（频率域方法）"></a>图像增强（频率域方法）</h1></blockquote>
+<p>在图像的某种变换域内，对图像的变换值进行处理。如，先对图像进行二维傅立叶变换，再对图像的频谱进行某种修正（滤波），最后将修正后的变换值逆变换到空间域，从而获得增强后的图像。<br><strong>寻找一个合适的模板（滤波核）</strong></p>
+<h2 id="卷积理论"><a href="#卷积理论" class="headerlink" title="卷积理论"></a>卷积理论</h2><p>如果原始图像是$f(x,y)$，处理后的图像是$g(x,y)$，而$h(x,y)$是滤波器的单位冲激响应，那么，空间域滤波处理过程可由下式表示：$g(x,y) = f(x,y)*h(x,y)$<br>如果$G(u,v)$, $H(u,v)$, $F(u,v)$分别是$g(x,y)$，$h(x,y)$和$f(x,y)$的傅里叶变换，由傅里叶变换的卷积定理可知：$g(x,y)=f(x,y)*h(x,y)$ &lt;=&gt; $G(u,v) = F(u,v)·H(u,v)$<br>经傅里叶逆变换可得到$g(x,y)$：$g(x,y)=F^{-1}[G(u,v)]=F^{-1}[F(u,v)·H(u,v)]$<br>两个关键：<br>1）将图像从图像空间转换到频域空间所需的变换$F$以及再将图像从频域空间转换到图像空间所需的变换$F^{-1}$。<br>2）在频域空间对图像进行增强处理的滤波核$H$。</p>
+<p>卷积公式：<br>一维$f*g(x)=\int_{-\infty}^{+\infty}f(a)g(x-a)da$<br>离散型$f*g(x)=\sum_{a=-\infty}^{+\infty}f(a)g(x-a)$<br>二维$f*g(x,y)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(a,b)g(x-a,y-b)dadb$<br>离散型$f*g(x,y)=\sum_{a=-\infty}^{+\infty}\sum_{b=-\infty}^{+\infty}f(a,b)g(x-a,y-b)$</p>
+<h2 id="傅立叶变换"><a href="#傅立叶变换" class="headerlink" title="傅立叶变换"></a>傅立叶变换</h2><h3 id="连续傅立叶变换"><a href="#连续傅立叶变换" class="headerlink" title="连续傅立叶变换"></a>连续傅立叶变换</h3><p>一维傅里叶变化：$F(u)=\int_{-\infty}^{+\infty} f(x)e^{-j2\pi ux}dx$ 通常称$F(u)$为$f(x)$的Fourier变换，$f(x)$为$F(u)$的Fourier反变换。<br>令$F(u)=R(u)+jI(u)=|F(u)|e^{jθ(u)}$<br>其中$|F(u)|=\sqrt{R(u)^2+I(u)^2}，θ(u)=arctg\frac{I(u)}{R(u)}$<br>$F(u)$称为$f(x)$的振幅谱（频谱，傅里叶谱）；$θ(u)$称为$f(x)$的相位谱，$E(u)=|F(u)|^2$称为$f(x)$的能量谱<br>通常，空间域指的是x的变化范围，而频率域指的是u的变化范围。<br>二维傅里叶变化：$F(u,v)=\int_{R^2} f(x,y)e^{-j2\pi(xu+yv)}dxdy$<br>令$F(u,v)=R(u,v)+jI(u,v)=|F(u,v)|e^{jθ(u,v)}$<br>其中$|F(u,v)|=\sqrt{R(u,v)^2+I(u,v)^2}，θ(u,v)=arctg\frac{I(u,v)}{R(u,v)}$<br>$F(u,v)$ 称为$f(x,y)$的振幅谱（频谱，傅里叶谱）；$θ(u,v)$ 称为$f(x,y)$的相位谱，$E(u,v)=|F(u,v)|^2$称为$f(x,y)$的能量谱</p>
+<h3 id="离散型傅立叶变换"><a href="#离散型傅立叶变换" class="headerlink" title="离散型傅立叶变换"></a>离散型傅立叶变换</h3><p>一维：$F(u)=\frac{1}{N}\sum_{m=0}^{N-1}f(m)e^{\frac{-j2πum}{N}}$<br>逆变换：$f(m)=\sum_{u=0}^{N-1}F(u)e^{\frac{j2πum}{N}}$<br>二维：$F(u,v)=\sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)e^{-2jπ\left(\frac{ux}{M}+\frac{vy}{N}\right)}$<br>逆变换：$f(x,y)=\frac{1}{MN}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1}F(u,v)e^{2jπ\left(\frac{ux}{M}+\frac{vy}{N}\right)}$<br>因为Fourier变换是一种正交变换，所以其正、反变换的系数可以有几种表示形式。 按照严格意义上的正交变换，正、反变换的系数相等，为：1/√MN 按照计算方便的角度，正、反变换的系数可以按照前面的方式给出，并且正、反变换的系数可以取反。</p>
+<p><strong>Fourier变换有两个好处： 可以得出信号在各个频率点上的强度；可以将卷积运算化为乘积运算。</strong><br>为简化问题，只讨论离散二维图像函数的Fourier变换,并且图幅参数为N×N的特殊情况。</p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ol>
+<li>尺度变换：<br>$af(x,y) ↔ aF(x,y)$<br>$f(ax,by) ↔  \frac{F(\frac{u}{a},\frac{v}{b})}{ab}$<br>$af(x,y)+bg(x,y) ↔  aF(x,y)+bG(x,y)$</li>
+<li>傅里叶变换的周期性：$F(u+kM,v+lN)=F(u,v)$</li>
+<li>平移<br>空域平移$f(m-m_0,n-n_0)↔F(u,v)e^{\frac{-j2\pi}{N}(m_{0}u+n_{0}v)}$<br>频域平移$f(m,n)e^{\frac{-j2\pi}{N}(mu_0+nv_0)}↔F(u-u_0,v-v_0)$<br>只要对图像乘以$(-1)^{m+n}$，频谱的原点就会移动到中央位置，从中央到周围边界的变化即为低频到高频的变化。</li>
+<li>可分性：$F(u,v)=F_x(F_y(f(x,y)))$，可见连续两次应用一维傅立叶变换,就可求得$F(u,v)$或$f(m,n)$。</li>
+<li>共轭对称性：$F(u,v)=\overline{F(-u,-v)}$</li>
+<li>旋转不变性：如果$f(m,n)$旋转θ, 则$F(w,v)$也旋转θ</li>
+<li>Parseval定理：$\sum_{m=0}^{M-1}\sum_{n=0}^{N-1}|f(m,n)|^2=\frac{1}{N^2}\sum_{u=0}^{M-1}\sum_{v=0}^{N-1}|F(u,v)|^2$</li>
+</ol>
+<h3 id="连续Fourier变换与离散傅立叶变换的联系及他们的物理解释"><a href="#连续Fourier变换与离散傅立叶变换的联系及他们的物理解释" class="headerlink" title="连续Fourier变换与离散傅立叶变换的联系及他们的物理解释"></a>连续Fourier变换与离散傅立叶变换的联系及他们的物理解释</h3><ol>
+<li>采样定理：<br>一维采样定理，若连续信号f(t)的最高截止频率为fc ,则采样频率必须满足fs≥2fc时，才能保证采样信号不失真地表示原信号；<br>二维采样定理，如果二维信号f(x,y)的Fourier频谱F(u,v)满足：F(u,v)=F(u,v) ,|u|≤U0,|v|≤V0，其余情况为0，其中，Uc,Vc是相应于空间变量x,y的最高截止频率，则当采样周期ΔxΔy，1/Δx=Us≥2Uc，1/Δy=Vs≥2Vc时，采样信号f(mΔx,nΔy),m,n=0, ±1, ±2…能唯一地恢复原信号f(x,y)，一般取：1/Δx=2Uc，1/Δy=2Vc，ΔxΔu=1/N，ΔyΔv=1/N</li>
+<li>Fourier 变换的统计特性：<br>直流分量：反映了原始图像的平均亮度；<br>能量集中：在低频区，85％，是数据编码和压缩的基础；<br>图像的亮度突变或跳变部分对应的高频区，缓变部分分布在低频区。</li>
+</ol>
+<h3 id="快速傅里叶变换"><a href="#快速傅里叶变换" class="headerlink" title="快速傅里叶变换"></a>快速傅里叶变换</h3><p>$F(u)=[F_e(u)+w_N^uF_o(u)],w_N^{ux}=exp(\frac{-j2πux}{N})$<br>$F(u+M)= [F_e(u)-w_N^uF_o(u)],M=\frac{N}{2}$</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>亲，可以打赏点吗？.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="GaryCao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="GaryCao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GaryCao</li>
+  <li class="post-copyright-date">
+    <strong>发表时间：</strong>
+    2017年11月26日 - 11:19
+  </li>
+  <li class="post-copyright-update">
+    <strong>最后更新：</strong>
+    2017年11月26日 - 11:19
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://garycao97.github.io/2017/11/26/数字图像处理学习笔记——基础篇/" title="数字图像处理学习笔记——基础篇">http://garycao97.github.io/2017/11/26/数字图像处理学习笔记——基础篇/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://garycao97.github.io/2017/11/26/数字图像处理学习笔记——基础篇/" aria-label="复制成功！"></i></span>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+<script type="text/javascript" src="//jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+<script src="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/数字图像处理/" rel="tag"># 数字图像处理</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/18/OpenGL学习笔记——入门篇/" rel="next" title="OpenGL学习笔记——入门篇">
+                <i class="fa fa-chevron-left"></i> OpenGL学习笔记——入门篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/05/HTML与CSS学习笔记——基础篇/" rel="prev" title="HTML与CSS学习笔记——基础篇">
+                HTML与CSS学习笔记——基础篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="GaryCao">
+            
+              <p class="site-author-name" itemprop="name">GaryCao</p>
+              <div class="site-description motion-element" itemprop="description">即将成为程序猿的大学生一枚</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/garycao97" title="GitHub &rarr; https://github.com/garycao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:gary_cao97@163.com" title="E-Mail &rarr; mailto:gary_cao97@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/GaryCao97" title="Weibo &rarr; https://weibo.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/GaryCao97" title="Twitter &rarr; https://twitter.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://2802341836.github.io" title="http://2802341836.github.io" rel="noopener" target="_blank">Cobboc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lourisxu.github.io" title="http://lourisxu.github.io" rel="noopener" target="_blank">Louris</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数字图像处理技术概念"><span class="nav-text">数字图像处理技术概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数字图像处理基本操作"><span class="nav-text">数字图像处理基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VisualStudio图片打开与保存"><span class="nav-text">VisualStudio图片打开与保存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-打开"><span class="nav-text">1.打开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-保存"><span class="nav-text">2.保存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图像文件基本处理"><span class="nav-text">图像文件基本处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-图像文件信息读取"><span class="nav-text">1.图像文件信息读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-图像缩小"><span class="nav-text">2.图像缩小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-图像放大"><span class="nav-text">3.图像放大</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-最近邻域内插法"><span class="nav-text">1)最近邻域内插法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-双线性内插法"><span class="nav-text">2)双线性内插法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字图像基本操作"><span class="nav-text">数字图像基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-算数操作"><span class="nav-text">1.算数操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-加"><span class="nav-text">1)加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-减"><span class="nav-text">2)减</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-乘"><span class="nav-text">3)乘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-除"><span class="nav-text">4)除</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-逻辑操作"><span class="nav-text">2.逻辑操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-与-amp"><span class="nav-text">1)与(&amp;)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-或"><span class="nav-text">2)或(|)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-非"><span class="nav-text">3)非(~)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-空间处理"><span class="nav-text">3.空间处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单象素操作"><span class="nav-text">1)单象素操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-邻域操作"><span class="nav-text">2)邻域操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-几何空间变换"><span class="nav-text">3)几何空间变换</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像增强（空间域方法）"><span class="nav-text">图像增强（空间域方法）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-灰度变换（强度映射、点处理）"><span class="nav-text">1.灰度变换（强度映射、点处理）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-直接灰度变换："><span class="nav-text">1)直接灰度变换：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图像反转"><span class="nav-text">图像反转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对数变换"><span class="nav-text">对数变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#幂律（伽马）变换"><span class="nav-text">幂律（伽马）变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分段线性变换函数"><span class="nav-text">分段线性变换函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-直方图处理（直方图均衡化、直方图匹配）"><span class="nav-text">2)直方图处理（直方图均衡化、直方图匹配）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#归一化"><span class="nav-text">归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直方图均衡"><span class="nav-text">直方图均衡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直方图匹配（规定化）"><span class="nav-text">直方图匹配（规定化）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-空间域滤波（模板处理）"><span class="nav-text">2.空间域滤波（模板处理）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#平滑空间滤波器"><span class="nav-text">平滑空间滤波器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锐化空间滤波器"><span class="nav-text">锐化空间滤波器</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像增强（频率域方法）"><span class="nav-text">图像增强（频率域方法）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积理论"><span class="nav-text">卷积理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傅立叶变换"><span class="nav-text">傅立叶变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连续傅立叶变换"><span class="nav-text">连续傅立叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散型傅立叶变换"><span class="nav-text">离散型傅立叶变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质"><span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续Fourier变换与离散傅立叶变换的联系及他们的物理解释"><span class="nav-text">连续Fourier变换与离散傅立叶变换的联系及他们的物理解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速傅里叶变换"><span class="nav-text">快速傅里叶变换</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GaryCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">149k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">4:31</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

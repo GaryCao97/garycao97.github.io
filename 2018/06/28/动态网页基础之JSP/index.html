@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="JSP开发环境的配置运行">
+<meta name="keywords" content="Java,HTML,前端,JavaWeb,JSP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态网页基础之JSP">
+<meta property="og:url" content="http://garycao97.github.io/2018/06/28/动态网页基础之JSP/index.html">
+<meta property="og:site_name" content="Gary&#39;s Secret Place">
+<meta property="og:description" content="JSP开发环境的配置运行">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image001.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image002.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image003.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image004.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image001.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image002.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image005.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image006.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image008.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image010.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image012.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image013.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image014.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image016.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image018.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image020.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image022.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image023.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image024.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image025.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image026.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image028.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image030.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image032.jpg">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image033.png">
+<meta property="og:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image014.png">
+<meta property="og:updated_time" content="2018-07-12T03:42:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动态网页基础之JSP">
+<meta name="twitter:description" content="JSP开发环境的配置运行">
+<meta name="twitter:image" content="http://garycao97.github.io/images/JSP%E7%AC%94%E8%AE%B0/image001.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gary's Secret Place" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://garycao97.github.io/2018/06/28/动态网页基础之JSP/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>动态网页基础之JSP | Gary's Secret Place</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gary's Secret Place</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Gary's Blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/GaryCao97/garycao97.github.io" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://garycao97.github.io/2018/06/28/动态网页基础之JSP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GaryCao">
+      <meta itemprop="description" content="即将成为程序猿的大学生一枚">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gary's Secret Place">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">动态网页基础之JSP
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-28 16:07:26" itemprop="dateCreated datePublished" datetime="2018-06-28T16:07:26+08:00">2018-06-28</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-12 11:42:26" itemprop="dateModified" datetime="2018-07-12T11:42:26+08:00">2018-07-12</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">7.6k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">14 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><h1 id="JSP开发环境的配置运行"><a href="#JSP开发环境的配置运行" class="headerlink" title="JSP开发环境的配置运行"></a>JSP开发环境的配置运行</h1></blockquote>
+<a id="more"></a>
+
+<h2 id="（一）JDK安装与配置"><a href="#（一）JDK安装与配置" class="headerlink" title="（一）JDK安装与配置"></a>（一）JDK安装与配置</h2><h3 id="1．安装JDK"><a href="#1．安装JDK" class="headerlink" title="1．安装JDK"></a>1．安装JDK</h3><p>运行下载的JDK软件包，可安装SDK，在安装过程中可以设置安装路径及选择组件，系统默认的安装路径为C:\ jdk1.5(当然也可以自己设定)，默认的组件选择是全部安装。</p>
+<h3 id="2．JDK环境变量的配置"><a href="#2．JDK环境变量的配置" class="headerlink" title="2．JDK环境变量的配置"></a>2．JDK环境变量的配置</h3><p>第一步：进入系统属性选择高级属性。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image001.png" alt><br>第二步： 进入环境变量界面。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image002.png" alt><br>第三步： 添加环境变量值。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image003.png" alt><br>第四步：添加PATH路径  C:\jdk1.5\bin(即JDK安装目录下的bin目录)<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image004.png" alt></p>
+<h2 id="（二）Tomcat安装与配置"><a href="#（二）Tomcat安装与配置" class="headerlink" title="（二）Tomcat安装与配置"></a>（二）Tomcat安装与配置</h2><h3 id="1．安装Tomcat"><a href="#1．安装Tomcat" class="headerlink" title="1．安装Tomcat"></a>1．安装Tomcat</h3><p>运行下载的Tomcat软件包，可安装SDK，在安装过程中可以设置安装路径及选择组件，安装路径为C:\Tomcat5，默认的组件选择是全部安装。</p>
+<h3 id="2．Tomcat环境变量的配置"><a href="#2．Tomcat环境变量的配置" class="headerlink" title="2．Tomcat环境变量的配置"></a>2．Tomcat环境变量的配置</h3><p>第一步：进入系统属性选择高级属性。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image001.png" alt><br>第二步：进入环境变量界面。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image002.png" alt><br>第三步：添加环境变量值。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image005.png" alt><br>第四步：添加PATH路径  C:\Tomcat5.0\bin<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image006.png" alt></p>
+<h2 id="（三）Eclipse的安装与配置"><a href="#（三）Eclipse的安装与配置" class="headerlink" title="（三）Eclipse的安装与配置"></a>（三）Eclipse的安装与配置</h2><h3 id="1．安装Eclipse"><a href="#1．安装Eclipse" class="headerlink" title="1．安装Eclipse"></a>1．安装Eclipse</h3><p>  先解压eclipse-SDK-3.2.1-win32.zip文件，然后运行MyEclipseEnterpriseWorkbenchInstaller_5.0.1GA_E3.2.exe软件。并选择安装路径，当安装提示要选择Eclipse SDK时，选择已经解压好的eclipse文件目录，然后照提示完成安装。</p>
+<h3 id="2．Eclipse的环境配置"><a href="#2．Eclipse的环境配置" class="headerlink" title="2．Eclipse的环境配置"></a>2．Eclipse的环境配置</h3><p>  先运行MyEclipse 5.0GA软件，第一次运行时需要建立一个工程文件目录，这里根据个人习惯自行建立。进入Eclipse界面后：<br>第一步：选择windows菜单选择Preferences项。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image008.jpg" alt><br>第二步：进入Preferences界面在type filter text中选择MyEclipse再选Application Server再选择Tomcat 5。后面操作如下图，分别选择Tomcat的安装路径，并选择Enable激活。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image010.jpg" alt><br>第三步：配置JDK。点开Tomcat，选择JDK。并点add。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image012.jpg" alt><br>第四步：添加JDK。在“JRE name：”写上JRE的名称（可以任意命名），在“JRE home directory”栏点browse选择JDK的安装路径。然后点确定，最后点击完成。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image013.png" alt><br>第五步：测试安装是否成功。检测是否能启动Tomcat。<br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image014.png" alt></p>
+<h2 id="（四）在Eclipse上建立一个JSP"><a href="#（四）在Eclipse上建立一个JSP" class="headerlink" title="（四）在Eclipse上建立一个JSP"></a>（四）在Eclipse上建立一个JSP</h2><h3 id="1．建立一个新的工程文件，名为exam1。"><a href="#1．建立一个新的工程文件，名为exam1。" class="headerlink" title="1．建立一个新的工程文件，名为exam1。"></a>1．建立一个新的工程文件，名为exam1。</h3><p><img src="/images/JSP%E7%AC%94%E8%AE%B0/image016.jpg" alt><br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image018.jpg" alt><br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image020.jpg" alt><br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image022.jpg" alt></p>
+<h3 id="2．建立一个JSP，名为First-jsp"><a href="#2．建立一个JSP，名为First-jsp" class="headerlink" title="2．建立一个JSP，名为First.jsp"></a>2．建立一个JSP，名为First.jsp</h3><p><img src="/images/JSP%E7%AC%94%E8%AE%B0/image023.png" alt><br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image024.png" alt></p>
+<h3 id="3．-编写JSP程序。"><a href="#3．-编写JSP程序。" class="headerlink" title="3．    编写JSP程序。"></a>3．    编写JSP程序。</h3><p>在First.jsp中编写：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  hello! This is my the First JSP page. <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="（五）部署JSP工程文件"><a href="#（五）部署JSP工程文件" class="headerlink" title="（五）部署JSP工程文件"></a>（五）部署JSP工程文件</h2><h3 id="1．进入开部署界面"><a href="#1．进入开部署界面" class="headerlink" title="1．进入开部署界面"></a>1．进入开部署界面</h3><p><img src="/images/JSP%E7%AC%94%E8%AE%B0/image025.png" alt><br>点击<img src="/images/JSP%E7%AC%94%E8%AE%B0/image026.png" alt><br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image028.jpg" alt></p>
+<h3 id="2．部署：在Project中选择要部署的工程文件，再点add。"><a href="#2．部署：在Project中选择要部署的工程文件，再点add。" class="headerlink" title="2．部署：在Project中选择要部署的工程文件，再点add。"></a>2．部署：在Project中选择要部署的工程文件，再点add。</h3><p><img src="/images/JSP%E7%AC%94%E8%AE%B0/image030.jpg" alt><br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image032.jpg" alt><br><img src="/images/JSP%E7%AC%94%E8%AE%B0/image033.png" alt></p>
+<h2 id="（六）启动Tomcat服务器"><a href="#（六）启动Tomcat服务器" class="headerlink" title="（六）启动Tomcat服务器"></a>（六）启动Tomcat服务器</h2><p><img src="/images/JSP%E7%AC%94%E8%AE%B0/image014.png" alt></p>
+<h2 id="（七）浏览JSP"><a href="#（七）浏览JSP" class="headerlink" title="（七）浏览JSP"></a>（七）浏览JSP</h2><p>打开浏览起，在地址栏输入：<code>http://localhost:8080/exam1/First.jsp</code> 。</p>
+<blockquote class="blockquote-center"><h1 id="JSP-Servlet技术"><a href="#JSP-Servlet技术" class="headerlink" title="JSP Servlet技术"></a>JSP Servlet技术</h1></blockquote>
+
+<p>Web应用程序有严格定义的目录结构，它需要一个称为部署描述文件的文件web.xml来配置。对应用程序的每个Servlet，可以在web.xml中定义若干个初始化参数，然后通过ServletConfig对象获取这些参数。</p>
+<p>ServletContext对象表示该应用程序的环境，通过该对象可以获得应用程序范围的初始化参数、容器版本信息、资源的URL、在其中存放共享数据以及登录日志等。</p>
+<blockquote class="blockquote-center"><h1 id="Servlet事件监听"><a href="#Servlet事件监听" class="headerlink" title="Servlet事件监听"></a>Servlet事件监听</h1></blockquote>
+
+<p>在Web应用程序中，事件的处理也是通过事件监听器接口处理的。Web应用事件处理的原理为：当Web应用中某些状态改变时，Servlet容器就产生某种事件，如ServletContext对象初始化时会产生ServletContextEvent事件，此时Servlet容器就会从注册的事件监听器中寻找处理该事件的监听器对象，并执行相应的代码。</p>
+<p>在Servlet 2.4规范中共定义了6种事件类型和8个事件监听器接口，它们可以处理三种对象上的事件，如下表所示：</p>
+
+<table>
+  <thead><tr><th>监听对象</th><th>监听器接口</th><th>监听事件</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="2">ServletContext</td><td>ServletContextListener</td><td>ServletContextEvent</td></tr>
+    <tr><td>ServletContextAttributeListener</td><td>ServletContextAttributeEvent</td></tr>
+    <tr><td rowspan="4">HttpSession</td><td>HttpSessionListener</td><td rowspan="2">HttpSessionEvent</td></tr>
+    <tr><td>HttpSessionActivationListener</td></tr>
+    <tr><td>HttpSessionAttributeListener</td><td rowspan="2">HttpSessionBindingEvent</td></tr>
+    <tr><td>HttpSessionBindingListener</td></tr>
+    <tr><td rowspan="2">ServletRequest</td><td>ServletRequestListener</td><td>ServletRequestEvent</td></tr>
+    <tr><td>ServletRequestAttributeListener</td><td>ServletRequestAttributeEvent</td></tr>
+  </tbody>
+</table>
+
+
+<blockquote class="blockquote-center"><h1 id="Servlet过滤器的使用"><a href="#Servlet过滤器的使用" class="headerlink" title="Servlet过滤器的使用"></a>Servlet过滤器的使用</h1></blockquote>
+
+<p>过滤器是web服务器上的组件，它们对客户和资源之间的请求和响应进行过滤。</p>
+<p>过滤器的工作原理是：当servlet容器接收到对某个资源的请求，它要检查是否有过滤器与之关联。如果有过滤器与该资源关联，servlet容器将把该请求发送给过滤器。在过滤器处理完请求后，它将做下面3件事：</p>
+<ol>
+<li>产生响应并将其返回给客户；</li>
+<li>如果有过滤器链，它将把（修改过或没有修改过）请求传递给下一个过滤器；</li>
+<li>将请求传递给不同的资源。</li>
+</ol>
+<p>当请求返回到客户时，它是以相反的方向经过同一组过滤器返回。过滤器链中的每个过滤器够可能修改响应。<br>过滤器API主要包括：Filter、FilterConfig和FilterChain接口。</p>
+<blockquote class="blockquote-center"><h1 id="JSP-会话管理"><a href="#JSP-会话管理" class="headerlink" title="JSP 会话管理"></a>JSP 会话管理</h1></blockquote>
+
+<p>HTTP协议是无状态的协议。在很多情况下，Web服务器必须能够跟踪客户的状态。比如，对于一个购物网站，在一个时刻可能有多个客户购物，Web服务器必须能够区分不同的客户。一般情况下，Web服务器为每个客户配置了虚拟的购物车（ShoppingCart）。当某个客户请求将一个商品放入购物车时，Web服务器必须根据发出请求的客户的身份，找到该客户的购物车，然后把商品放入其中。</p>
+<p>Web服务器跟踪客户的状态通常有4种方法：<br>（1）使用HttpSession对象管理会话；<br>（2）使用持久的Cookie对象；<br>（3）使用URL重写机制；<br>（4）使用隐藏的表单域。</p>
+<blockquote class="blockquote-center"><h1 id="JSP基本语法与页面指令"><a href="#JSP基本语法与页面指令" class="headerlink" title="JSP基本语法与页面指令"></a>JSP基本语法与页面指令</h1></blockquote>
+
+<p>JSP语法元素有&lt;% %&gt;、&lt;%@ %&gt;、&lt;%= %&gt;和&lt;%! %&gt;四种，分别是运行Java代码、jsp的初始化以及导入、输出java表达式的值和java初始化代码</p>
+<p>JSP有三个指令元素：page、include和taglib。这些指令元素是针对JSP引擎的，并不会产生任何看得见的输出。它们都包含在<code>&lt;%@</code>和<code>%&gt;</code>标签内。主要学会使用page指令。</p>
+<p><code>&lt;%@ page %&gt;</code>指令作用于整个JSP页面，包括静态包含的页面，但不包括动态包含的页面。可以在一个页面中包含多个<code>&lt;%@ page %&gt;</code>指令，但其属性除<code>import</code>外只能在整个页面中出现一次。<code>&lt;%@ page %&gt;</code>指令可以放在页面的任何位置，但为了JSP程序的可读性，一般将<code>&lt;%@ page %&gt;</code>指令放在页面的前面。<code>&lt;%@ page %&gt;</code>主要包含以下几种基本属性：1）import、引用类文件；2）language，指定脚本语言；3）contentType，指定jsp编码方式；</p>
+<blockquote class="blockquote-center"><h1 id="JSP隐含对象与作用域"><a href="#JSP隐含对象与作用域" class="headerlink" title="JSP隐含对象与作用域"></a>JSP隐含对象与作用域</h1></blockquote>
+
+<p>在JSP页面的转换阶段（JSP页面转换后定义的类名为：implicit_jsp，该类继承了org.apache.jasper.runtime.HttpJspBase），JSP引擎在_jspService()方法中声明并初始化了9个隐含对象，它们主要是为了方便在JSP页面对这些对象的访问。这些隐含对象包括：application、session、request、response、out、page、pageContext、config、exception。</p>
+<p>在上述9个隐含对象中，有下面4个作用域对象，它们是：application、session、request、pageContext。它们主要用来在不同作用域中共享数据。</p>
+<h2 id="一）request对象"><a href="#一）request对象" class="headerlink" title="一）request对象"></a>一）request对象</h2><p>request对象是javax.servlet.http.HttpServletRequest对象的一个实例。每次客户端请求一个页面时，JSP引擎都会创建一个新的对象来表示那个请求。<br>request对象提供方法来获取HTTP头信息，包括表单数据，cookies，HTTP方法等。</p>
+<h2 id="二）response对象"><a href="#二）response对象" class="headerlink" title="二）response对象"></a>二）response对象</h2><p>response对象是javax.servlet.http.HttpServletResponse对象的一个实例。当服务器创建request对象时，它也创建了代表客户端响应的对象。<br>response对象还定义了接口，可以处理创建的新的HTTP 头。通过这个对象JSP程序员可以添加新的cookies或日期stamps，HTTP状态码等。</p>
+<h2 id="三）out对象"><a href="#三）out对象" class="headerlink" title="三）out对象"></a>三）out对象</h2><p>out隐式对象是javax.servlet.jsp. JspWriter对象的一个实例，用于在响应中发送内容，在Servlet中可以通过<code>pageContext.getOut()</code>来获取该对象。<br>最初的JspWriter对象被实例化不同程度地取决于页面是否缓冲。通过使用页面指令的<code>buffered=&#39;false&#39;</code>属性，缓冲可以很容易地关掉。<br>JspWriter对象包含大部分与java.io.PrintWriter类相同的方法。然而，JspWriter对象有一些额外的方法用来处理缓冲。与PrintWriter对象不同，JspWriter抛出IOException。</p>
+<h2 id="四）session对象"><a href="#四）session对象" class="headerlink" title="四）session对象"></a>四）session对象</h2><p>session对象是javax.servlet.http.HttpSession的一个实例，且行为与Java Servlet中的session对象完全相同，在Servlet中可以通过<code>pageContext.getSession()</code>来获取该对象。<br>session对象是用来跟踪客户端请求之间的客户端会话。</p>
+<h2 id="五）application对象"><a href="#五）application对象" class="headerlink" title="五）application对象"></a>五）application对象</h2><p>application对象是用于生成的Servlet的ServletContext对象的直接包装器，且实际上是javax.servlet.ServletContext对象的一个实例，在Servlet中可以通过<code>pageContext.getServletContext()</code>来获取该对象。<br>这个对象是JSP页面整个生命周期的一个代表。当初始化JSP页面时，这个对象被创建，当JSP页面由<code>jspDestroy()</code>方法删除时，该对象也会被删除。<br>通过为application添加属性，可以确保生成web应用程序的所有JSP文件可以访问它。</p>
+<h2 id="六）config对象"><a href="#六）config对象" class="headerlink" title="六）config对象"></a>六）config对象</h2><p>config对象是javax.servlet.ServletConfig的一个实例，且是用于生成的servlet的ServletConfig对象的直接包装器，在Servlet中可以通过<code>pageContext.getServletConfig()</code>来获取该对象。<br>该对象允许JSP程序员访问Servlet或JSP引擎初始化参数，如路径或文件位置等。<br>下面的config方法是唯一一个可能曾经使用的方法，且它的使用很简单：<code>config.getServletName();</code><br>这返回servlet的名称，该名称是包含在定义在web-inf\web.xml文件中<servlet-name>元素中的字符串。</servlet-name></p>
+<h2 id="七）pageContext对象"><a href="#七）pageContext对象" class="headerlink" title="七）pageContext对象"></a>七）pageContext对象</h2><p>pageContext对象是javax.servlet.jsp.PageContext对象的一个实例。pageContext对象用于表示整个JSP页面。<br>这个对象是作为一种手段来访问页面信息的，同时避免了大部分的实现细节。<br>这个对象为每个请求存储了请求引用和响应对象。application，config，session，out对象是通过访问该对象的属性派生出来的。<br>pageContext对象还包含发布到JSP页面的指令信息，包括缓冲信息，errorPageURL，页面范围。<br>pageContext类定义了几个领域，包括PAGE_SCOPE，REQUEST_SCOPE，SESSION_SCOPE，和APPLICATION_SCOPE，它确定了这四个范围。它还支持40多个方法，大约一半的方法是继承了javax.servlet.jsp.JspContext类的。<br>重要方法之一是<code>removeAttribute()</code>，该方法接受一个或两个参数。例如，<code>pageContext.removeAttribute(“attrName”)</code>从全部范围中删除属性，而下面的代码仅从页面范围中删除它：<code>pageContext.removeAttribute(&quot;attrName&quot;, PAGE_SCOPE)</code>;</p>
+<h2 id="八）page对象"><a href="#八）page对象" class="headerlink" title="八）page对象"></a>八）page对象</h2><p>这个对象是一个页面实例的真实引用。它可以被认为是一个对象，代表了整个JSP页面。page对象实际上是this对象的一个直接的同义词。</p>
+<h2 id="九）exception对象"><a href="#九）exception对象" class="headerlink" title="九）exception对象"></a>九）exception对象</h2><p>exception对象是一个包装器，包含来自先前页面的异常抛出。它通常用于为错误条件生成一个适当的响应。</p>
+<blockquote class="blockquote-center"><h1 id="JSP组件重用与JavaBean"><a href="#JSP组件重用与JavaBean" class="headerlink" title="JSP组件重用与JavaBean"></a>JSP组件重用与JavaBean</h1></blockquote>
+
+<p>通过重用Web组件可以提高应用程序开发的效率和其可维护性。在JSP中可以通过包含机制和JavaBean实现Web组件的重用。</p>
+<p>包含分为静态包含和动态包含。静态包含通过<code>include</code>指令实现，动态包含通过标准动作<code>jsp:include</code>实现。</p>
+<p>在JSP页面中使用JavaBean是最重要的组件重用技术，这主要是通过下面3个标准动作实现的：<br><code>&lt;jsp:useBean&gt;</code><br><code>&lt;jsp:setProperty&gt;</code><br><code>&lt;jsp:getProperty&gt;</code></p>
+<blockquote class="blockquote-center"><h1 id="表达式语言"><a href="#表达式语言" class="headerlink" title="表达式语言"></a>表达式语言</h1></blockquote>
+
+<p>表达式语言（EL）是JSP 2.0新增的功能。它是一种简洁的数据访问语言，通过它可以在JSP页面中方便地访问应用程序数据，无需使用JSP表达式（&lt;%=和%&gt;）。EL的目标是使动态网页的设计、开发和维护更加容易。JSP表达式语言（EL）使得访问存储在JavaBean中的数据变得非常简单。JSP EL既可以用来创建算术表达式也可以用来创建逻辑表达式。在JSP EL表达式内可以使用整型数，浮点数，字符串，常量true、false，还有null。</p>
+<p>EL的特点是访问数据可以使用点（.）运算符或方括号（[]）运算符；可以访问隐含对象；有自己的运算符构造表达式；可以使用Java语言编写的函数等。</p>
+
+<table>
+  <thead><tr><th width="50%" style="text-align:right">EL 表达式</th><th>结果</th></tr></thead>
+  <tbody>
+    <tr><td style="text-align:right"><code>${1}</code></td><td>1</td></tr>
+    <tr><td style="text-align:right"><code>${1 + 2}</code></td><td>3</td></tr>
+    <tr><td style="text-align:right"><code>${1.2 + 2.3}</code></td><td>3.5</td></tr>
+    <tr><td style="text-align:right"><code>${1.2E4 + 1.4}</code></td><td>12001.4</td></tr>
+    <tr><td style="text-align:right"><code>${-4 - 2}</code></td><td>-6</td></tr>
+    <tr><td style="text-align:right"><code>${21 * 2}</code></td><td>42</td></tr>
+    <tr><td style="text-align:right"><code>${3/4}</code></td><td>0.75</td></tr>
+    <tr><td style="text-align:right"><code>${3 div 4}</code></td><td>0.75</td></tr>
+    <tr><td style="text-align:right"><code>${3/0}</code></td><td>Infinity</td></tr>
+    <tr><td style="text-align:right"><code>${10%4}</code></td><td>2</td></tr>
+    <tr><td style="text-align:right"><code>${10 mod 4}</code></td><td>2</td></tr>
+    <tr><td style="text-align:right"><code>${(1==2) ? 3 : 4}</code></td><td>4</td></tr>
+  </tbody>
+</table>
+
+
+<blockquote class="blockquote-center"><h1 id="JSTL与标签文件"><a href="#JSTL与标签文件" class="headerlink" title="JSTL与标签文件"></a>JSTL与标签文件</h1></blockquote>
+
+<p>JSP标准标签库（JSP Standard Tag Library，简称JSTL）是一个为实现Web应用程序的常用功能而开发的标签库集合。功能包括基本输入输出、流程控制、XML文件解析、数据库查询、国际化和文本格式化等。JSTL主要由下面几个库组成：核心标签库；XML标签库；格式化/国际化标签库；数据库标签库；函数标签库。</p>
+<p>这些库都很有用，但我们这里只学习核心库的使用。核心库的标签又可以分成四类，如下表所示：</p>
+
+<table>
+  <thead><tr><th>JSTL标签类别</th><th>JSTL标签</th><th>标签说明</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="2">通用目的</td><td><code>&lt;c:out><code></code></code></td><td>在页面中显示内容</td></tr>
+    <tr><td><code>&lt;c:catch></code></td><td>捕获异常</td></tr>
+    <tr><td rowspan="2">变量支持</td><td><code>&lt;c:set></code></td><td>设置一个EL变量值</td></tr>
+    <tr><td><code>&lt;c:remove></code></td><td>清除一个EL变量</td></tr>
+    <tr><td rowspan="4">流程控制</td><td><code>&lt;c:if></code></td><td>根据一个属性等于一个值改变处理</td></tr>
+    <tr><td><code>&lt;c:choose></code></td><td>根据一个属性等于一组值改变处理</td></tr>
+    <tr><td><code>&lt;c:forEach></code></td><td>对集合中的每个对象作重复处理</td></tr>
+    <tr><td><code>&lt;c:forTokens></code></td><td>对给定一个文本域中的每个子串执行处理</td></tr>
+    <tr><td rowspan="3">URL处理</td><td><code>&lt;c:url></code></td><td>重写URL并对它们的参数编码</td></tr>
+    <tr><td><code>&lt;c:import></code></td><td>访问web应用程序外部的内容</td></tr>
+    <tr><td><code>&lt;c:redirect></code></td><td>告诉客户浏览器访问另一个URL</td></tr>
+  </tbody>
+</table>
+
+
+<p>标签文件（tag file）也是JSP 2.0新增的功能，它的目的是使JSP页面开发人员仅使用JSP语法就能开发标签库而无须编写Java程序。所谓标签文件就是直接使用JSP语法编写的标签。标签文件的扩展名一般为.tag或.tagx，如果标签文件包含其他完整的或片段的标签文件，JSP 2.0建议其扩展名为.tagf。<br>在JSP页面中使用标签文件，需要在taglib动作中使用tagdir属性指定标签文件所在的目录，例如：<br><code>&lt;%@ taglib prefix=&quot;mytag&quot; tagdir=&quot;/WEB-INF/tags&quot;%&gt;</code></p>
+<p><strong>JSTL的安装</strong><br>要在JSP页面中使用JSTL标签，首先必须安装JSTL库。可以到<a href="http://jakarta.apache.org/" target="_blank" rel="noopener">Jakarta</a>网站下载最新版本的JSTL。<br>如果安装了Tomcat，可以在示例应用程序中获得JSTL，它位于<catalina_home>\webapps\ examples\WEB-INF\lib目录中，共有两个文件：jstl.jar和standard.jar。将这两个文件复制到你的Web应用程序的WEB-INF\lib目录中，就安装了JSTL。</catalina_home></p>
+<p><em>使用JSTL我们不用建立标签库描述文件，因为该文件已经包含在standard.jar文件中了，JSP容器可以找到该文件。另外，也可以不用配置web.xml文件，因为JSP容器使用隐含映射的方式可以将标准的URI映射到适当的标签库上。</em></p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>亲，可以打赏点吗？.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="GaryCao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="GaryCao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GaryCao</li>
+  <li class="post-copyright-date">
+    <strong>发表时间：</strong>
+    2018年06月28日 - 16:07
+  </li>
+  <li class="post-copyright-update">
+    <strong>最后更新：</strong>
+    2018年07月12日 - 11:42
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://garycao97.github.io/2018/06/28/动态网页基础之JSP/" title="动态网页基础之JSP">http://garycao97.github.io/2018/06/28/动态网页基础之JSP/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://garycao97.github.io/2018/06/28/动态网页基础之JSP/" aria-label="复制成功！"></i></span>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+<script type="text/javascript" src="//jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+<script src="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/JavaWeb/" rel="tag"># JavaWeb</a>
+          
+            <a href="/tags/JSP/" rel="tag"># JSP</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/16/Unity学习笔记——入门篇/" rel="next" title="Unity学习笔记——入门篇">
+                <i class="fa fa-chevron-left"></i> Unity学习笔记——入门篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/15/秋招笔试-更新中/" rel="prev" title="秋招笔试(更新中)">
+                秋招笔试(更新中) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="GaryCao">
+            
+              <p class="site-author-name" itemprop="name">GaryCao</p>
+              <div class="site-description motion-element" itemprop="description">即将成为程序猿的大学生一枚</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/garycao97" title="GitHub &rarr; https://github.com/garycao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:gary_cao97@163.com" title="E-Mail &rarr; mailto:gary_cao97@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/GaryCao97" title="Weibo &rarr; https://weibo.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/GaryCao97" title="Twitter &rarr; https://twitter.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://2802341836.github.io" title="http://2802341836.github.io" rel="noopener" target="_blank">Cobboc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lourisxu.github.io" title="http://lourisxu.github.io" rel="noopener" target="_blank">Louris</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP开发环境的配置运行"><span class="nav-text">JSP开发环境的配置运行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）JDK安装与配置"><span class="nav-text">（一）JDK安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1．安装JDK"><span class="nav-text">1．安装JDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2．JDK环境变量的配置"><span class="nav-text">2．JDK环境变量的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）Tomcat安装与配置"><span class="nav-text">（二）Tomcat安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1．安装Tomcat"><span class="nav-text">1．安装Tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2．Tomcat环境变量的配置"><span class="nav-text">2．Tomcat环境变量的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（三）Eclipse的安装与配置"><span class="nav-text">（三）Eclipse的安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1．安装Eclipse"><span class="nav-text">1．安装Eclipse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2．Eclipse的环境配置"><span class="nav-text">2．Eclipse的环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（四）在Eclipse上建立一个JSP"><span class="nav-text">（四）在Eclipse上建立一个JSP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1．建立一个新的工程文件，名为exam1。"><span class="nav-text">1．建立一个新的工程文件，名为exam1。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2．建立一个JSP，名为First-jsp"><span class="nav-text">2．建立一个JSP，名为First.jsp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3．-编写JSP程序。"><span class="nav-text">3．    编写JSP程序。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（五）部署JSP工程文件"><span class="nav-text">（五）部署JSP工程文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1．进入开部署界面"><span class="nav-text">1．进入开部署界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2．部署：在Project中选择要部署的工程文件，再点add。"><span class="nav-text">2．部署：在Project中选择要部署的工程文件，再点add。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（六）启动Tomcat服务器"><span class="nav-text">（六）启动Tomcat服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（七）浏览JSP"><span class="nav-text">（七）浏览JSP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP-Servlet技术"><span class="nav-text">JSP Servlet技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet事件监听"><span class="nav-text">Servlet事件监听</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet过滤器的使用"><span class="nav-text">Servlet过滤器的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP-会话管理"><span class="nav-text">JSP 会话管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP基本语法与页面指令"><span class="nav-text">JSP基本语法与页面指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP隐含对象与作用域"><span class="nav-text">JSP隐含对象与作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一）request对象"><span class="nav-text">一）request对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二）response对象"><span class="nav-text">二）response对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三）out对象"><span class="nav-text">三）out对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四）session对象"><span class="nav-text">四）session对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五）application对象"><span class="nav-text">五）application对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六）config对象"><span class="nav-text">六）config对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七）pageContext对象"><span class="nav-text">七）pageContext对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八）page对象"><span class="nav-text">八）page对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九）exception对象"><span class="nav-text">九）exception对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP组件重用与JavaBean"><span class="nav-text">JSP组件重用与JavaBean</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表达式语言"><span class="nav-text">表达式语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSTL与标签文件"><span class="nav-text">JSTL与标签文件</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GaryCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">149k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">4:31</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="OpenGL程序的配置与基本结构">
+<meta name="keywords" content="c++,OpenGL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL学习笔记——入门篇">
+<meta property="og:url" content="http://garycao97.github.io/2017/11/18/OpenGL学习笔记——入门篇/index.html">
+<meta property="og:site_name" content="Gary&#39;s Secret Place">
+<meta property="og:description" content="OpenGL程序的配置与基本结构">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-29T10:46:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL学习笔记——入门篇">
+<meta name="twitter:description" content="OpenGL程序的配置与基本结构">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gary's Secret Place" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://garycao97.github.io/2017/11/18/OpenGL学习笔记——入门篇/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>OpenGL学习笔记——入门篇 | Gary's Secret Place</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gary's Secret Place</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Gary's Blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/GaryCao97/garycao97.github.io" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://garycao97.github.io/2017/11/18/OpenGL学习笔记——入门篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GaryCao">
+      <meta itemprop="description" content="即将成为程序猿的大学生一枚">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gary's Secret Place">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenGL学习笔记——入门篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-18 13:10:27" itemprop="dateCreated datePublished" datetime="2017-11-18T13:10:27+08:00">2017-11-18</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-12-29 18:46:27" itemprop="dateModified" datetime="2017-12-29T18:46:27+08:00">2017-12-29</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">18k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">34 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><h1 id="OpenGL程序的配置与基本结构"><a href="#OpenGL程序的配置与基本结构" class="headerlink" title="OpenGL程序的配置与基本结构"></a>OpenGL程序的配置与基本结构</h1></blockquote>
+<a id="more"></a>
+
+<h2 id="第一步：下载配置"><a href="#第一步：下载配置" class="headerlink" title="第一步：下载配置"></a>第一步：下载配置</h2><p>1.<a href="http://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>：一个专门针对OpenGL的C语言库<br>2.<a href="http://glad.dav1d.de/" target="_blank" rel="noopener">GLAD</a>：OpenGL函数指针库<br>3.<a href="https://github.com/nothings/stb/blob/master/stb_image.h" target="_blank" rel="noopener">stb_image</a>：纹理图片导入<br>4.<a href="http://glm.g-truc.net/" target="_blank" rel="noopener">GLM</a>：OpenGL数学函数（向量，矩阵等的变换）</p>
+<h2 id="第二步：环境配置"><a href="#第二步：环境配置" class="headerlink" title="第二步：环境配置"></a>第二步：环境配置</h2><p>创建项目并打开项目属性；<br>设置 c/c++目录 -&gt; 包含目录；<br>设置 c/c++目录 -&gt; 库目录；<br>设置 链接器 -&gt; 输入 -&gt; 附加依赖项（opengl32.lib;glfw3.lib;）；<br>设置 链接器 -&gt; 系统 -&gt; 子系统（窗口）；<br>设置 链接器 -&gt; 高级 -&gt; 入口点（mainCTRStartup）；<br>添加项目已有源文件（glad.c）；<br>新建源文件（stb_image.cpp）：#define STB_IMAGE_IMPLEMENTATION  #include &lt;stb_image.h&gt;</p>
+<h2 id="第三步：编写自定义类"><a href="#第三步：编写自定义类" class="headerlink" title="第三步：编写自定义类"></a>第三步：编写自定义类</h2><h3 id="1-Shader：着色器类"><a href="#1-Shader：着色器类" class="headerlink" title="1.Shader：着色器类"></a>1.Shader：着色器类</h3><p>简化源代码，对着色器文件进行读取编译<br>新建头文件（Shader.h）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> SHADER_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SHADER_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/glm.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shader</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> ID;</span><br><span class="line">	<span class="comment">// 构造函数在动态生成着色器</span></span><br><span class="line">	Shader(<span class="keyword">const</span> <span class="keyword">char</span>* vertexPath, <span class="keyword">const</span> <span class="keyword">char</span>* fragmentPath, <span class="keyword">const</span> <span class="keyword">char</span>* geometryPath = <span class="literal">nullptr</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 1. 从文件中检索顶点/片段/几何着色器源代码</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> vertexCode;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> fragmentCode;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">string</span> geometryCode;</span><br><span class="line">		<span class="built_in">std</span>::ifstream vShaderFile;</span><br><span class="line">		<span class="built_in">std</span>::ifstream fShaderFile;</span><br><span class="line">		<span class="built_in">std</span>::ifstream gShaderFile;</span><br><span class="line">		<span class="comment">// 确保 ifstream 对象可以引发异常:</span></span><br><span class="line">		vShaderFile.exceptions(<span class="built_in">std</span>::ifstream::failbit | <span class="built_in">std</span>::ifstream::badbit);</span><br><span class="line">		fShaderFile.exceptions(<span class="built_in">std</span>::ifstream::failbit | <span class="built_in">std</span>::ifstream::badbit);</span><br><span class="line">		gShaderFile.exceptions(<span class="built_in">std</span>::ifstream::failbit | <span class="built_in">std</span>::ifstream::badbit);</span><br><span class="line">		<span class="keyword">try</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// 打开文件</span></span><br><span class="line">			vShaderFile.open(vertexPath);</span><br><span class="line">			fShaderFile.open(fragmentPath);</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">stringstream</span> vShaderStream, fShaderStream;</span><br><span class="line">			<span class="comment">// 将文件的缓冲区内容读入流</span></span><br><span class="line">			vShaderStream &lt;&lt; vShaderFile.rdbuf();</span><br><span class="line">			fShaderStream &lt;&lt; fShaderFile.rdbuf();</span><br><span class="line">			<span class="comment">// 关闭文件处理程序</span></span><br><span class="line">			vShaderFile.close();</span><br><span class="line">			fShaderFile.close();</span><br><span class="line">			<span class="comment">// 将流转换为字符串</span></span><br><span class="line">			vertexCode = vShaderStream.str();</span><br><span class="line">			fragmentCode = fShaderStream.str();</span><br><span class="line">			<span class="comment">// 如果存在几何着色器路径, 也会加载几何着色器</span></span><br><span class="line">			<span class="keyword">if</span> (geometryPath != <span class="literal">nullptr</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				gShaderFile.open(geometryPath);</span><br><span class="line">				<span class="built_in">std</span>::<span class="built_in">stringstream</span> gShaderStream;</span><br><span class="line">				gShaderStream &lt;&lt; gShaderFile.rdbuf();</span><br><span class="line">				gShaderFile.close();</span><br><span class="line">				geometryCode = gShaderStream.str();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (<span class="built_in">std</span>::ifstream::failure e)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">char</span>* vShaderCode = vertexCode.c_str();</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">char</span> * fShaderCode = fragmentCode.c_str();</span><br><span class="line">		<span class="comment">// 2. 编译着色器</span></span><br><span class="line">		<span class="keyword">unsigned</span> <span class="keyword">int</span> vertex, fragment;</span><br><span class="line">		<span class="keyword">int</span> success;</span><br><span class="line">		<span class="keyword">char</span> infoLog[<span class="number">512</span>];</span><br><span class="line">		<span class="comment">// 编译顶点着色器</span></span><br><span class="line">		vertex = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">		glShaderSource(vertex, <span class="number">1</span>, &amp;vShaderCode, <span class="literal">NULL</span>);</span><br><span class="line">		glCompileShader(vertex);</span><br><span class="line">		checkCompileErrors(vertex, <span class="string">"VERTEX"</span>);</span><br><span class="line">		<span class="comment">// 编译片断着色器</span></span><br><span class="line">		fragment = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">		glShaderSource(fragment, <span class="number">1</span>, &amp;fShaderCode, <span class="literal">NULL</span>);</span><br><span class="line">		glCompileShader(fragment);</span><br><span class="line">		checkCompileErrors(fragment, <span class="string">"FRAGMENT"</span>);</span><br><span class="line">		<span class="comment">// 如果给出几何着色, 编译几何着色器</span></span><br><span class="line">		<span class="keyword">unsigned</span> <span class="keyword">int</span> geometry;</span><br><span class="line">		<span class="keyword">if</span> (geometryPath != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">const</span> <span class="keyword">char</span> * gShaderCode = geometryCode.c_str();</span><br><span class="line">			geometry = glCreateShader(GL_GEOMETRY_SHADER);</span><br><span class="line">			glShaderSource(geometry, <span class="number">1</span>, &amp;gShaderCode, <span class="literal">NULL</span>);</span><br><span class="line">			glCompileShader(geometry);</span><br><span class="line">			checkCompileErrors(geometry, <span class="string">"GEOMETRY"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 着色器程序</span></span><br><span class="line">		ID = glCreateProgram();</span><br><span class="line">		glAttachShader(ID, vertex);</span><br><span class="line">		glAttachShader(ID, fragment);</span><br><span class="line">		<span class="keyword">if</span> (geometryPath != <span class="literal">nullptr</span>)</span><br><span class="line">			glAttachShader(ID, geometry);</span><br><span class="line">		glLinkProgram(ID);</span><br><span class="line">		checkCompileErrors(ID, <span class="string">"PROGRAM"</span>);</span><br><span class="line">		<span class="comment">// 删除着色器, 因为它们现在已经链接到我们的程序, 不再需要</span></span><br><span class="line">		glDeleteShader(vertex);</span><br><span class="line">		glDeleteShader(fragment);</span><br><span class="line">		<span class="keyword">if</span> (geometryPath != <span class="literal">nullptr</span>)</span><br><span class="line">			glDeleteShader(geometry);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 激活着色器</span></span><br><span class="line">	<span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">use</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUseProgram(ID);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 实用的uniform函数</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setBool</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">bool</span> value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform1i(glGetUniformLocation(ID, name.c_str()), (<span class="keyword">int</span>)value);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setInt</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">int</span> value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform1i(glGetUniformLocation(ID, name.c_str()), value);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setFloat</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">float</span> value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setVec2</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">const</span> glm::vec2 &amp;value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform2fv(glGetUniformLocation(ID, name.c_str()), <span class="number">1</span>, &amp;value[<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setVec2</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform2f(glGetUniformLocation(ID, name.c_str()), x, y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setVec3</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">const</span> glm::vec3 &amp;value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform3fv(glGetUniformLocation(ID, name.c_str()), <span class="number">1</span>, &amp;value[<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setVec3</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> z)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform3f(glGetUniformLocation(ID, name.c_str()), x, y, z);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setVec4</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">const</span> glm::vec4 &amp;value)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform4fv(glGetUniformLocation(ID, name.c_str()), <span class="number">1</span>, &amp;value[<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setVec4</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> z, <span class="keyword">float</span> w)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniform4f(glGetUniformLocation(ID, name.c_str()), x, y, z, w);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setMat2</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">const</span> glm::mat2 &amp;mat)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniformMatrix2fv(glGetUniformLocation(ID, name.c_str()), <span class="number">1</span>, GL_FALSE, &amp;mat[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setMat3</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">const</span> glm::mat3 &amp;mat)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniformMatrix3fv(glGetUniformLocation(ID, name.c_str()), <span class="number">1</span>, GL_FALSE, &amp;mat[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setMat4</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name, <span class="keyword">const</span> glm::mat4 &amp;mat)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), <span class="number">1</span>, GL_FALSE, &amp;mat[<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="comment">// 检查着色器编译/链接错误的实用功能。</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">checkCompileErrors</span><span class="params">(GLuint shader, <span class="built_in">std</span>::<span class="built_in">string</span> type)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		GLint success;</span><br><span class="line">		GLchar infoLog[<span class="number">1024</span>];</span><br><span class="line">		<span class="keyword">if</span> (type != <span class="string">"PROGRAM"</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			glGetShaderiv(shader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line">			<span class="keyword">if</span> (!success)</span><br><span class="line">			&#123;</span><br><span class="line">				glGetShaderInfoLog(shader, <span class="number">1024</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">				<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER_COMPILATION_ERROR of type: "</span> &lt;&lt; type &lt;&lt; <span class="string">"\n"</span></span><br><span class="line">          &lt;&lt; infoLog &lt;&lt; <span class="string">"\n -- --------------------------------------------------- -- "</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			glGetProgramiv(shader, GL_LINK_STATUS, &amp;success);</span><br><span class="line">			<span class="keyword">if</span> (!success)</span><br><span class="line">			&#123;</span><br><span class="line">				glGetProgramInfoLog(shader, <span class="number">1024</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">				<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::PROGRAM_LINKING_ERROR of type: "</span> &lt;&lt; type &lt;&lt; <span class="string">"\n"</span></span><br><span class="line">          &lt;&lt; infoLog &lt;&lt; <span class="string">"\n -- --------------------------------------------------- -- "</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Camera：摄像机类"><a href="#2-Camera：摄像机类" class="headerlink" title="2.Camera：摄像机类"></a>2.Camera：摄像机类</h3><p>合并操作，简化代码<br>新建头文件（Camera.h）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CAMERA_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CAMERA_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/glm.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/gtc/matrix_transform.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="comment">// 为照相机移动定义了几种可能的选项。用作抽象, 以远离窗口系统的特定输入方法</span></span><br><span class="line"><span class="keyword">enum</span> Camera_Movement &#123;</span><br><span class="line">	FORWARD,</span><br><span class="line">	BACKWARD,</span><br><span class="line">	LEFT,</span><br><span class="line">	RIGHT</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 默认摄像机数值</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> YAW = <span class="number">-90.0f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> PITCH = <span class="number">0.0f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> SPEED = <span class="number">2.5f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> SENSITIVTY = <span class="number">0.1f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> ZOOM = <span class="number">45.0f</span>;</span><br><span class="line"><span class="comment">// 一个抽象的摄像机类, 处理输入和计算相应的欧拉角度, 向量和矩阵在 OpenGL 中的使用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Camera</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">// 摄像机的属性</span></span><br><span class="line">	glm::vec3 Position;</span><br><span class="line">	glm::vec3 Front;</span><br><span class="line">	glm::vec3 Up;</span><br><span class="line">	glm::vec3 Right;</span><br><span class="line">	glm::vec3 WorldUp;</span><br><span class="line">	<span class="comment">// 欧拉角</span></span><br><span class="line">	<span class="keyword">float</span> Yaw;</span><br><span class="line">	<span class="keyword">float</span> Pitch;</span><br><span class="line">	<span class="comment">// 摄像机选项</span></span><br><span class="line">	<span class="keyword">float</span> MovementSpeed;</span><br><span class="line">	<span class="keyword">float</span> MouseSensitivity;</span><br><span class="line">	<span class="keyword">float</span> Zoom;</span><br><span class="line">	<span class="comment">// 使用向量构造的构造函数</span></span><br><span class="line">	Camera(glm::vec3 position = glm::vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>), glm::vec3 up = glm::vec3(<span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>), <span class="keyword">float</span> yaw = YAW, <span class="keyword">float</span> pitch = PITCH) : Front(glm::vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">-1.0f</span>)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)</span><br><span class="line">	&#123;</span><br><span class="line">		Position = position;</span><br><span class="line">		WorldUp = up;</span><br><span class="line">		Yaw = yaw;</span><br><span class="line">		Pitch = pitch;</span><br><span class="line">		updateCameraVectors();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 具有标量值的构造函数</span></span><br><span class="line">	Camera(<span class="keyword">float</span> posX, <span class="keyword">float</span> posY, <span class="keyword">float</span> posZ, <span class="keyword">float</span> upX, <span class="keyword">float</span> upY, <span class="keyword">float</span> upZ, <span class="keyword">float</span> yaw, <span class="keyword">float</span> pitch) : Front(glm::vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">-1.0f</span>)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVTY), Zoom(ZOOM)</span><br><span class="line">	&#123;</span><br><span class="line">		Position = glm::vec3(posX, posY, posZ);</span><br><span class="line">		WorldUp = glm::vec3(upX, upY, upZ);</span><br><span class="line">		Yaw = yaw;</span><br><span class="line">		Pitch = pitch;</span><br><span class="line">		updateCameraVectors();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 返回使用欧拉角和LookAt矩阵计算的视图矩阵</span></span><br><span class="line">	glm::<span class="function">mat4 <span class="title">GetViewMatrix</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> glm::lookAt(Position, Position + Front, Up);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 处理从任何类似键盘输入系统接收到的输入。接受摄像机定义的枚举形式的输入参数 (从窗口系统中抽象出来)</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ProcessKeyboard</span><span class="params">(Camera_Movement direction, <span class="keyword">float</span> deltaTime)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">float</span> velocity = MovementSpeed * deltaTime;</span><br><span class="line">		<span class="keyword">if</span> (direction == FORWARD)</span><br><span class="line">			Position += Front * velocity;</span><br><span class="line">		<span class="keyword">if</span> (direction == BACKWARD)</span><br><span class="line">			Position -= Front * velocity;</span><br><span class="line">		<span class="keyword">if</span> (direction == LEFT)</span><br><span class="line">			Position -= Right * velocity;</span><br><span class="line">		<span class="keyword">if</span> (direction == RIGHT)</span><br><span class="line">			Position += Right * velocity;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 处理从鼠标输入系统接收的输入。接受 x 和 y 方向的偏移值。</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ProcessMouseMovement</span><span class="params">(<span class="keyword">float</span> xoffset, <span class="keyword">float</span> yoffset, GLboolean constrainPitch = <span class="literal">true</span>)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		xoffset*= MouseSensitivity;</span><br><span class="line">		yoffset*= MouseSensitivity;</span><br><span class="line">		Yaw += xoffset;</span><br><span class="line">		Pitch += yoffset;</span><br><span class="line">		<span class="comment">// 确保当Pitch超出界限时, 屏幕不会被翻转</span></span><br><span class="line">		<span class="keyword">if</span> (constrainPitch)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (Pitch &gt; <span class="number">89.0f</span>)</span><br><span class="line">				Pitch = <span class="number">89.0f</span>;</span><br><span class="line">			<span class="keyword">if</span> (Pitch &lt; <span class="number">-89.0f</span>)</span><br><span class="line">				Pitch = <span class="number">-89.0f</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 使用更新的欧拉角度更新Front、Right和Up向量</span></span><br><span class="line">		updateCameraVectors();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 处理从鼠标滚轮事件接收的输入。只需要在垂直轮轴上输入</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ProcessMouseScroll</span><span class="params">(<span class="keyword">float</span> yoffset)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (Zoom &gt;= <span class="number">1.0f</span> &amp;&amp; Zoom &lt;= <span class="number">45.0f</span>)</span><br><span class="line">			Zoom -= yoffset;</span><br><span class="line">		<span class="keyword">if</span> (Zoom &lt;= <span class="number">1.0f</span>)</span><br><span class="line">			Zoom = <span class="number">1.0f</span>;</span><br><span class="line">		<span class="keyword">if</span> (Zoom &gt;= <span class="number">45.0f</span>)</span><br><span class="line">			Zoom = <span class="number">45.0f</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="comment">// 计算从相机 (更新) 的欧拉角度的前矢量</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updateCameraVectors</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// Calculate the new Front vector</span></span><br><span class="line">		glm::vec3 front;</span><br><span class="line">		front.x = <span class="built_in">cos</span>(glm::radians(Yaw)) * <span class="built_in">cos</span>(glm::radians(Pitch));</span><br><span class="line">		front.y = <span class="built_in">sin</span>(glm::radians(Pitch));</span><br><span class="line">		front.z = <span class="built_in">sin</span>(glm::radians(Yaw)) * <span class="built_in">cos</span>(glm::radians(Pitch));</span><br><span class="line">		Front = glm::normalize(front);</span><br><span class="line">		<span class="comment">// Also re-calculate the Right and Up vector</span></span><br><span class="line">		Right = glm::normalize(glm::cross(Front, WorldUp));  <span class="comment">// Normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.</span></span><br><span class="line">		Up = glm::normalize(glm::cross(Right, Front));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：编写着色器代码文件"><a href="#第四步：编写着色器代码文件" class="headerlink" title="第四步：编写着色器代码文件"></a>第四步：编写着色器代码文件</h2><p>顶点着色器：*.vs；片断着色器：*.fs;</p>
+<ol>
+<li><p>*.vs：一般情况</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line"><span class="comment">// 布局输入</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec3 aPos;</span><br><span class="line">layout (location = <span class="number">1</span>) in vec3 aColor;</span><br><span class="line">layout (location = <span class="number">2</span>) in vec2 aTexCoord;</span><br><span class="line"><span class="comment">// 输出</span></span><br><span class="line">out vec3 ourColor;</span><br><span class="line">out vec2 TexCoord;</span><br><span class="line"><span class="comment">// 局外设定</span></span><br><span class="line">uniform mat4 model; <span class="comment">// 模型本身的变化矩阵</span></span><br><span class="line">uniform mat4 view; <span class="comment">// LookAt矩阵</span></span><br><span class="line">uniform mat4 projection; <span class="comment">// 投影矩阵</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  gl_Position = projection * view * model * vec4(aPos, <span class="number">1.0</span>); <span class="comment">// 乘法是由右往左看的</span></span><br><span class="line">	ourColor = aColor;</span><br><span class="line">	TexCoord = vec2(aTexCoord.x, aTexCoord.y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>*.fs：纹理图片混合</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 FragColor;</span><br><span class="line"></span><br><span class="line">in vec3 ourColor;</span><br><span class="line">in vec2 TexCoord;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 纹理采样器</span></span><br><span class="line">uniform sampler2D texture[n]; <span class="comment">// n组纹理采样器</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// linearly interpolate between both textures (80% container, 20% awesomeface)</span></span><br><span class="line">	FragColor = mix(texture(texture[<span class="number">0</span>], TexCoord), texture(texture[<span class="number">1</span>], TexCoord), <span class="number">0.2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="第五步：创建源文件"><a href="#第五步：创建源文件" class="headerlink" title="第五步：创建源文件"></a>第五步：创建源文件</h2><h3 id="立即渲染模式"><a href="#立即渲染模式" class="headerlink" title="立即渲染模式"></a>立即渲染模式</h3><p>注：现在已经不常用了，因此只是简单介绍</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  glfwInit(); <span class="comment">// 初始化</span></span><br><span class="line">	GLFWwindow* window = glfwCreateWindow(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"HelloWindow"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>); <span class="comment">// 创建窗口</span></span><br><span class="line">	glfwMakeContextCurrent(window);</span><br><span class="line">	<span class="keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))&#123;  <span class="comment">// 加载函数指针</span></span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLAD"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (!glfwWindowShouldClose(window)) &#123; <span class="comment">// 渲染循环</span></span><br><span class="line">		glClearColor(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>); <span class="comment">// 渲染背景</span></span><br><span class="line">		glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">		glBegin(GL_TRIANGLES); <span class="comment">// 渲染图形</span></span><br><span class="line">			glColor3f(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">			glVertex3f(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">			glColor3f(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">			glVertex3f(<span class="number">-1.0</span>, <span class="number">-1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">			glColor3f(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">			glVertex3f(<span class="number">1.0</span>, <span class="number">-1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">		glEnd();</span><br><span class="line">		glfwSwapBuffers(window); <span class="comment">// 交换缓存</span></span><br><span class="line">		glfwPollEvents(); <span class="comment">// 挂起事件</span></span><br><span class="line">	&#125;</span><br><span class="line">	glfwTerminate(); <span class="comment">// 终止函数</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心模式"><a href="#核心模式" class="headerlink" title="核心模式"></a>核心模式</h3><ol>
+<li><p>头文件引入，以及全局变量和函数定义</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 环境配置头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stb_image.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/glm.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/gtc/matrix_transform.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glm/gtc/type_ptr.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">// 自定义类头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Shader.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Camera.h"</span></span></span><br><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow *window)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mouse_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xpos, <span class="keyword">double</span> ypos)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scroll_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xoffset, <span class="keyword">double</span> yoffset)</span></span>;</span><br><span class="line"><span class="comment">// 窗口大小设定</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> SCR_WIDTH = <span class="number">800</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> SCR_HEIGHT = <span class="number">600</span>;</span><br><span class="line"><span class="comment">// 摄像机初始化</span></span><br><span class="line"><span class="function">Camera <span class="title">camera</span><span class="params">(glm::vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">3.0f</span>))</span></span>;</span><br><span class="line"><span class="keyword">float</span> lastX = SCR_WIDTH / <span class="number">2.0f</span>;</span><br><span class="line"><span class="keyword">float</span> lastY = SCR_HEIGHT / <span class="number">2.0f</span>;</span><br><span class="line"><span class="keyword">bool</span> firstMouse = <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// 时间</span></span><br><span class="line"><span class="keyword">float</span> deltaTime = <span class="number">0.0f</span>;	<span class="comment">// time between current frame and last frame</span></span><br><span class="line"><span class="keyword">float</span> lastFrame = <span class="number">0.0f</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>glfw：初始化</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">glfwInit();</span><br><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __APPLE__</span></span><br><span class="line">	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); <span class="comment">// uncomment this statement to fix compilation on OS X</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>glfw：窗口创建</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GLFWwindow* window = glfwCreateWindow(窗口宽度, 窗口高度, <span class="string">"窗口标题"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">if</span> (window == <span class="literal">NULL</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	glfwTerminate();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line">glfwMakeContextCurrent(window);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>窗口函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">glfwSetFramebufferSizeCallback(window, framebuffer_size_callback); <span class="comment">// 窗口大小改变的响应函数</span></span><br><span class="line">glfwSetCursorPosCallback(window, mouse_callback); <span class="comment">// 鼠标移动响应函数</span></span><br><span class="line">glfwSetScrollCallback(window, scroll_callback); <span class="comment">// 鼠标滚轮响应函数</span></span><br><span class="line">glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); <span class="comment">// 隐藏鼠标</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>glad：加载OpenGL函数指针</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLAD"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Shader：建立编译着色器项目</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Shader <span class="title">ourShader</span><span class="params">(<span class="string">"shader.vs"</span>, <span class="string">"shader.fs"</span>)</span></span>; <span class="comment">// *.vs是顶点着色器；*.fs是片断着色器</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置顶点数据和缓冲并配置顶点属性</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> vertices[n][] = &#123; <span class="comment">// n组顶点数组</span></span><br><span class="line">  <span class="comment">// 位置(x,y,z)        // 颜色(R,G,B)      // 纹理(X,Y)</span></span><br><span class="line">  <span class="number">0.5f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="comment">// 右上</span></span><br><span class="line">  <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="comment">// 右下</span></span><br><span class="line">  <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>,   <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="comment">// 左下</span></span><br><span class="line">  <span class="number">-0.5f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>,   <span class="number">0.0f</span>, <span class="number">1.0f</span>,  <span class="comment">// 左上</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> indices[n][] = &#123; <span class="comment">// n组索引数组</span></span><br><span class="line">  <span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="comment">// 第一个三角形</span></span><br><span class="line">  <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>  <span class="comment">// 第二个三角形</span></span><br><span class="line">&#125;;</span><br><span class="line">glm::vec3 cubePositions[n] = &#123; <span class="comment">// n组模型位置</span></span><br><span class="line">	glm::vec3(<span class="number">0.0f</span>,  <span class="number">0.0f</span>,  <span class="number">0.0f</span>),</span><br><span class="line">	glm::vec3(<span class="number">2.0f</span>,  <span class="number">5.0f</span>, <span class="number">-15.0f</span>),</span><br><span class="line">	glm::vec3(<span class="number">-1.5f</span>, <span class="number">-2.2f</span>, <span class="number">-2.5f</span>),</span><br><span class="line">	glm::vec3(<span class="number">-3.8f</span>, <span class="number">-2.0f</span>, <span class="number">-12.3f</span>),</span><br><span class="line">	glm::vec3(<span class="number">2.4f</span>, <span class="number">-0.4f</span>, <span class="number">-3.5f</span>),</span><br><span class="line">	glm::vec3(<span class="number">-1.7f</span>,  <span class="number">3.0f</span>, <span class="number">-7.5f</span>),</span><br><span class="line">	glm::vec3(<span class="number">1.3f</span>, <span class="number">-2.0f</span>, <span class="number">-2.5f</span>),</span><br><span class="line">	glm::vec3(<span class="number">1.5f</span>,  <span class="number">2.0f</span>, <span class="number">-2.5f</span>),</span><br><span class="line">	glm::vec3(<span class="number">1.5f</span>,  <span class="number">0.2f</span>, <span class="number">-1.5f</span>),</span><br><span class="line">	glm::vec3(<span class="number">-1.3f</span>,  <span class="number">1.0f</span>, <span class="number">-1.5f</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> VBOs[n], VAOs[n], EBOs[n];</span><br><span class="line">glGenVertexArrays(n, VAOs);</span><br><span class="line">glGenBuffers(n, VBOs);</span><br><span class="line">glGenBuffers(n, EBOs);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">0</span>;m &lt; n;m++)&#123;</span><br><span class="line">  <span class="comment">// 绑定顶点数组对象</span></span><br><span class="line">  glBindVertexArray(VAOs[m]);</span><br><span class="line">  <span class="comment">// 绑定顶点缓冲对象</span></span><br><span class="line">  glBindBuffer(GL_ARRAY_BUFFER, VBOs[m]);</span><br><span class="line">  glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices[n]), vertices[n], GL_STATIC_DRAW);</span><br><span class="line">  <span class="comment">// 绑定索引数组对象</span></span><br><span class="line">  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBOs[m]);</span><br><span class="line">  glBufferData(GL_ELEMENT_ARRAY_BUFFER, <span class="keyword">sizeof</span>(indices[n]), indices[n], GL_STATIC_DRAW);</span><br><span class="line">	<span class="comment">// 位置属性传入</span></span><br><span class="line">	glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)<span class="number">0</span>);</span><br><span class="line">	glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line">	<span class="comment">// 颜色属性传入</span></span><br><span class="line">	glVertexAttribPointer(<span class="number">1</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)(<span class="number">3</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>)));</span><br><span class="line">	glEnableVertexAttribArray(<span class="number">1</span>);</span><br><span class="line">	<span class="comment">// 纹理属性传入</span></span><br><span class="line">	glVertexAttribPointer(<span class="number">2</span>, <span class="number">2</span>, GL_FLOAT, GL_FALSE, <span class="number">8</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)(<span class="number">6</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>)));</span><br><span class="line">	glEnableVertexAttribArray(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>纹理图片的导入</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> textures[n];</span><br><span class="line">glGenTextures(n, textures);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">0</span>;m &lt; n;m++)&#123;</span><br><span class="line">	glBindTexture(GL_TEXTURE_2D, textures[m]);</span><br><span class="line">	<span class="comment">// 设置纹理覆盖参数</span></span><br><span class="line">	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	<span class="comment">//</span></span><br><span class="line">	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); <span class="comment">//</span></span><br><span class="line">	<span class="comment">// 设置纹理填充参数</span></span><br><span class="line">	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);</span><br><span class="line">	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);</span><br><span class="line">	<span class="comment">// 加载图片，创建纹理并生成MIP map</span></span><br><span class="line">	<span class="keyword">int</span> width, height, nrChannels;</span><br><span class="line">	stbi_set_flip_vertically_on_load(<span class="literal">true</span>); <span class="comment">// tell stb_image.h to flip loaded texture's on the y-axis.</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span>* data = stbi_load(<span class="string">"图片路径和文件名"</span>, &amp;width, &amp;height, &amp;nrChannels, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (data)</span><br><span class="line">	&#123;</span><br><span class="line">		glTexImage2D(GL_TEXTURE_2D, <span class="number">0</span>, GL_RGB, width, height, <span class="number">0</span>, GL_RGB, GL_UNSIGNED_BYTE, data);</span><br><span class="line">		glGenerateMipmap(GL_TEXTURE_2D);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to load texture"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	stbi_image_free(data);</span><br><span class="line">&#125;</span><br><span class="line">ourShader.use();</span><br><span class="line"><span class="comment">// 告诉OpenGL每个采样器的纹理单位的归属</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">0</span>;m &lt; n;m++)&#123;</span><br><span class="line">  ourShader.setInt(<span class="string">"texture[m]"</span>,m); <span class="comment">// *** 等于 片断着色器中uniform sampler2D的最后一个</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>渲染循环</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (!glfwWindowShouldClose(window))</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 求不同电脑的心跳或帧秒</span></span><br><span class="line">	<span class="keyword">float</span> currentFrame = glfwGetTime();</span><br><span class="line">	deltaTime = currentFrame - lastFrame;</span><br><span class="line">	lastFrame = currentFrame;</span><br><span class="line">	<span class="comment">// 键盘输入事件</span></span><br><span class="line">	processInput(window);</span><br><span class="line">	<span class="comment">// 渲染背景</span></span><br><span class="line">	glClearColor(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">	glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">	<span class="comment">// 在相应的纹理单元上绑定纹理</span></span><br><span class="line">	glActiveTexture(GL_TEXTURE0);</span><br><span class="line">	glBindTexture(GL_TEXTURE_2D, texture[<span class="number">0</span>]);</span><br><span class="line">	glActiveTexture(GL_TEXTURE1);</span><br><span class="line">	glBindTexture(GL_TEXTURE_2D, texture[<span class="number">1</span>]);</span><br><span class="line">  ···等等</span><br><span class="line">	<span class="comment">// 渲染内容</span></span><br><span class="line">	ourShader.use();</span><br><span class="line">	<span class="comment">// 将投影矩阵传递给着色器 (请注意, 在这种情况下, 它可以更改每个帧)</span></span><br><span class="line">	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (<span class="keyword">float</span>)SCR_WIDTH / (<span class="keyword">float</span>)SCR_HEIGHT, <span class="number">0.1f</span>, <span class="number">100.0f</span>);</span><br><span class="line">	ourShader.setMat4(<span class="string">"projection"</span>, projection);</span><br><span class="line">	<span class="comment">// 摄像机/视图变换</span></span><br><span class="line">	glm::mat4 view = camera.GetViewMatrix();</span><br><span class="line">	ourShader.setMat4(<span class="string">"view"</span>, view);</span><br><span class="line">	glBindVertexArray(VAOs[m]);</span><br><span class="line">	glDrawElements(GL_TRIANGLES, <span class="number">6</span>, GL_UNSIGNED_INT, <span class="number">0</span>); <span class="comment">// EBO方式渲染图元</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		glm::mat4 model;</span><br><span class="line">		model = glm::translate(model, cubePositions[i]);</span><br><span class="line">		<span class="keyword">float</span> angle = <span class="number">20.0f</span> * (i);</span><br><span class="line">		model = glm::rotate(model, glm::radians(angle), glm::vec3(<span class="number">1.0f</span>, <span class="number">0.3f</span>, <span class="number">0.5f</span>));</span><br><span class="line">		ourShader.setMat4(<span class="string">"model"</span>, model);</span><br><span class="line">		glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">36</span>); <span class="comment">// 直接使用VBO的方式渲染图元</span></span><br><span class="line">	&#125;</span><br><span class="line">  ···等等</span><br><span class="line">	<span class="comment">// glfw: 交换缓冲区以及挂起输入输出事件</span></span><br><span class="line">	glfwSwapBuffers(window);</span><br><span class="line">	glfwPollEvents();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>glfw：终止与释放</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可选: 释放所有资源一旦他们的目标已经使用过:</span></span><br><span class="line">glDeleteVertexArrays(n, VAOs);</span><br><span class="line">glDeleteBuffers(n, VBOs);</span><br><span class="line">glfwTerminate();</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理所有输入: 查询 GLFW 相关按键是否按下/松开此框架并相应做出反应</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">processInput</span><span class="params">(GLFWwindow *window)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)</span><br><span class="line">		glfwSetWindowShouldClose(window, <span class="literal">true</span>);</span><br><span class="line">	<span class="keyword">if</span> (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)</span><br><span class="line">		camera.ProcessKeyboard(FORWARD, deltaTime);</span><br><span class="line">	<span class="keyword">if</span> (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)</span><br><span class="line">		camera.ProcessKeyboard(BACKWARD, deltaTime);</span><br><span class="line">	<span class="keyword">if</span> (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)</span><br><span class="line">		camera.ProcessKeyboard(LEFT, deltaTime);</span><br><span class="line">	<span class="keyword">if</span> (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)</span><br><span class="line">		camera.ProcessKeyboard(RIGHT, deltaTime);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// glfw: 每当鼠标移动时, 就会调用此回调</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mouse_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xpos, <span class="keyword">double</span> ypos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (firstMouse)</span><br><span class="line">	&#123;</span><br><span class="line">		lastX = xpos;</span><br><span class="line">		lastY = ypos;</span><br><span class="line">		firstMouse = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">float</span> xoffset = xpos - lastX;</span><br><span class="line">	<span class="keyword">float</span> yoffset = lastY - ypos; <span class="comment">// 自 y 坐标从下到上反向</span></span><br><span class="line">	lastX = xpos;</span><br><span class="line">	lastY = ypos;</span><br><span class="line">	camera.ProcessMouseMovement(xoffset, yoffset);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// glfw: 每当鼠标滚轮滚动时, 就会调用此回调</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scroll_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">double</span> xoffset, <span class="keyword">double</span> yoffset)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	camera.ProcessMouseScroll(yoffset);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// glfw:  每当窗口大小改变时，就会调用此回调</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote class="blockquote-center"><h1 id="OpenGL常用函数功能解析"><a href="#OpenGL常用函数功能解析" class="headerlink" title="OpenGL常用函数功能解析"></a>OpenGL常用函数功能解析</h1></blockquote>
+
+<blockquote class="blockquote-center"><h1 id="OpenGL常见几何图元绘制"><a href="#OpenGL常见几何图元绘制" class="headerlink" title="OpenGL常见几何图元绘制"></a>OpenGL常见几何图元绘制</h1></blockquote>
+
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://learnopengl-cn.github.io" target="_blank" rel="noopener">LearnOpenGL-CN</a>：LearnOpenGL系列教程的中文版</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>亲，可以打赏点吗？.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="GaryCao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="GaryCao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GaryCao</li>
+  <li class="post-copyright-date">
+    <strong>发表时间：</strong>
+    2017年11月18日 - 13:10
+  </li>
+  <li class="post-copyright-update">
+    <strong>最后更新：</strong>
+    2017年12月29日 - 18:46
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://garycao97.github.io/2017/11/18/OpenGL学习笔记——入门篇/" title="OpenGL学习笔记——入门篇">http://garycao97.github.io/2017/11/18/OpenGL学习笔记——入门篇/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://garycao97.github.io/2017/11/18/OpenGL学习笔记——入门篇/" aria-label="复制成功！"></i></span>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+<script type="text/javascript" src="//jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+<script src="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/OpenGL/" rel="tag"># OpenGL</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/10/数据结构小结/" rel="next" title="数据结构小结">
+                <i class="fa fa-chevron-left"></i> 数据结构小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/26/数字图像处理学习笔记——基础篇/" rel="prev" title="数字图像处理学习笔记——基础篇">
+                数字图像处理学习笔记——基础篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="GaryCao">
+            
+              <p class="site-author-name" itemprop="name">GaryCao</p>
+              <div class="site-description motion-element" itemprop="description">即将成为程序猿的大学生一枚</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/garycao97" title="GitHub &rarr; https://github.com/garycao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:gary_cao97@163.com" title="E-Mail &rarr; mailto:gary_cao97@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/GaryCao97" title="Weibo &rarr; https://weibo.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/GaryCao97" title="Twitter &rarr; https://twitter.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://2802341836.github.io" title="http://2802341836.github.io" rel="noopener" target="_blank">Cobboc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lourisxu.github.io" title="http://lourisxu.github.io" rel="noopener" target="_blank">Louris</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenGL程序的配置与基本结构"><span class="nav-text">OpenGL程序的配置与基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：下载配置"><span class="nav-text">第一步：下载配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：环境配置"><span class="nav-text">第二步：环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：编写自定义类"><span class="nav-text">第三步：编写自定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Shader：着色器类"><span class="nav-text">1.Shader：着色器类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Camera：摄像机类"><span class="nav-text">2.Camera：摄像机类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步：编写着色器代码文件"><span class="nav-text">第四步：编写着色器代码文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五步：创建源文件"><span class="nav-text">第五步：创建源文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#立即渲染模式"><span class="nav-text">立即渲染模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心模式"><span class="nav-text">核心模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenGL常用函数功能解析"><span class="nav-text">OpenGL常用函数功能解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenGL常见几何图元绘制"><span class="nav-text">OpenGL常见几何图元绘制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GaryCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">149k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">4:31</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

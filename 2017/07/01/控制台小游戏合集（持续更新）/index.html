@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="近日为了做好游戏相关的准备，特地自行制作了几款控制台的小游戏，在以后的时间中，也会持续更新。">
+<meta name="keywords" content="c++,游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="控制台小游戏合集（持续更新）">
+<meta property="og:url" content="http://garycao97.github.io/2017/07/01/控制台小游戏合集（持续更新）/index.html">
+<meta property="og:site_name" content="Gary&#39;s Secret Place">
+<meta property="og:description" content="近日为了做好游戏相关的准备，特地自行制作了几款控制台的小游戏，在以后的时间中，也会持续更新。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-11T05:36:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="控制台小游戏合集（持续更新）">
+<meta name="twitter:description" content="近日为了做好游戏相关的准备，特地自行制作了几款控制台的小游戏，在以后的时间中，也会持续更新。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Gary's Secret Place" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://garycao97.github.io/2017/07/01/控制台小游戏合集（持续更新）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>控制台小游戏合集（持续更新） | Gary's Secret Place</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gary's Secret Place</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Gary's Blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/GaryCao97/garycao97.github.io" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://garycao97.github.io/2017/07/01/控制台小游戏合集（持续更新）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GaryCao">
+      <meta itemprop="description" content="即将成为程序猿的大学生一枚">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gary's Secret Place">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">控制台小游戏合集（持续更新）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-01 12:37:51" itemprop="dateCreated datePublished" datetime="2017-07-01T12:37:51+08:00">2017-07-01</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-11-11 13:36:26" itemprop="dateModified" datetime="2017-11-11T13:36:26+08:00">2017-11-11</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">14k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">26 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>近日为了做好游戏相关的准备，特地自行制作了几款控制台的小游戏，在以后的时间中，也会持续更新。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="五子棋-鼠标下棋"><a href="#五子棋-鼠标下棋" class="headerlink" title="五子棋(鼠标下棋)"></a>五子棋(鼠标下棋)</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT_CLICK FROM_LEFT_1ST_BUTTON_PRESSED</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RIGHT_CLICK RIGHTMOST_BUTTON_PRESSED</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> GameState;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PLAYING 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLACKWIN 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WHITEWIN 2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLACK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WHITE 2</span></span><br><span class="line"><span class="keyword">int</span> ChessBoard[<span class="number">19</span>][<span class="number">19</span>];</span><br><span class="line"><span class="keyword">short</span> Top = <span class="number">3</span>, Left = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">char</span> BlackChess[<span class="number">3</span>] = <span class="string">"○"</span>;</span><br><span class="line"><span class="keyword">char</span> WhiteChess[<span class="number">3</span>] = <span class="string">"●"</span>;</span><br><span class="line"><span class="keyword">int</span> Direct[<span class="number">8</span>][<span class="number">2</span>] = &#123;</span><br><span class="line">	&#123; <span class="number">1</span>,<span class="number">1</span> &#125;,</span><br><span class="line">	&#123; <span class="number">1</span>,<span class="number">0</span> &#125;,</span><br><span class="line">	&#123; <span class="number">1</span>,<span class="number">-1</span> &#125;,</span><br><span class="line">	&#123; <span class="number">0</span>,<span class="number">-1</span> &#125;,</span><br><span class="line">	&#123; <span class="number">-1</span>,<span class="number">-1</span> &#125;,</span><br><span class="line">	&#123; <span class="number">-1</span>,<span class="number">0</span> &#125;,</span><br><span class="line">	&#123; <span class="number">-1</span>,<span class="number">1</span> &#125;,</span><br><span class="line">	&#123; <span class="number">0</span>,<span class="number">1</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//------------------控制台函数------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">curGotoXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y)</span></span>;<span class="comment">//光标移动</span></span><br><span class="line"><span class="function">COORD <span class="title">getMouseXY</span><span class="params">(DWORD clickType)</span></span>;<span class="comment">//鼠标单击时的位置 clickType = LEFT_CLICK时为鼠标左键</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HideCursor</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClearScreen</span><span class="params">()</span></span>; <span class="comment">// 清屏</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintInXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y, <span class="keyword">char</span> *str)</span></span>;</span><br><span class="line"><span class="comment">//-----------------------函数-----------------------</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowInfo</span><span class="params">(<span class="keyword">bool</span> isBlack)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClearCB</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawCB</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Game</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">GameState <span class="title">CheckWin</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Message</span><span class="params">(<span class="keyword">int</span> whoWin)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	HideCursor();</span><br><span class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">		ClearScreen();</span><br><span class="line">		ClearCB();</span><br><span class="line">		DrawCB();</span><br><span class="line">		Game();</span><br><span class="line">		curGotoXY(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">		getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">curGotoXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y)</span> </span>&#123;</span><br><span class="line">	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), &#123; x,y &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">COORD <span class="title">getMouseXY</span><span class="params">(DWORD clickType)</span> </span>&#123;</span><br><span class="line">	INPUT_RECORD inRec;</span><br><span class="line">	DWORD res;</span><br><span class="line">	COORD pos;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		ReadConsoleInputW(GetStdHandle(STD_INPUT_HANDLE), &amp;inRec, <span class="number">1</span>, &amp;res);</span><br><span class="line">		<span class="keyword">if</span> (inRec.EventType == MOUSE_EVENT) &#123;</span><br><span class="line">			pos = inRec.Event.MouseEvent.dwMousePosition;</span><br><span class="line">			<span class="keyword">if</span> (inRec.Event.MouseEvent.dwButtonState == clickType)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pos;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HideCursor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	CONSOLE_CURSOR_INFO cursor_info = &#123; <span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line">	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;cursor_info);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClearScreen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	CONSOLE_SCREEN_BUFFER_INFO bInfo;</span><br><span class="line">	DWORD d;</span><br><span class="line">	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;bInfo);</span><br><span class="line">	COORD home = &#123; <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> size = bInfo.dwSize.X * bInfo.dwSize.Y;</span><br><span class="line">	FillConsoleOutputCharacterW(GetStdHandle(STD_OUTPUT_HANDLE), <span class="number">0</span>, size, home, &amp;d);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintInXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y, <span class="keyword">char</span> * str)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//DWORD d;</span></span><br><span class="line">	curGotoXY(x, y);</span><br><span class="line">	printf_s(<span class="string">"%s"</span>, str);</span><br><span class="line">	<span class="comment">//WriteConsoleOutputCharacter(GetStdHandle(STD_OUTPUT_HANDLE), (LPCWSTR)str, strlen(str), &#123; x,y &#125;, &amp;d);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowInfo</span><span class="params">(<span class="keyword">bool</span> isBlack)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> * str;</span><br><span class="line">	<span class="keyword">if</span> (isBlack)str = <span class="string">"该黑棋下了"</span>;</span><br><span class="line">	<span class="keyword">else</span> str = <span class="string">"该白棋下了"</span>;</span><br><span class="line">	PrintInXY(Left + <span class="number">8</span>, <span class="number">2</span>, str);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClearCB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">19</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">19</span>; j++)</span><br><span class="line">			ChessBoard[i][j] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DrawCB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> * str;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">short</span> i = <span class="number">0</span>; i &lt; <span class="number">19</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">short</span> j = <span class="number">0</span>; j &lt; <span class="number">19</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>)</span><br><span class="line">				str = <span class="string">"╔"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">18</span>)</span><br><span class="line">				str = <span class="string">"╚"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">18</span> &amp;&amp; j == <span class="number">0</span>)</span><br><span class="line">				str = <span class="string">"╗"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">18</span> &amp;&amp; j == <span class="number">18</span>)</span><br><span class="line">				str = <span class="string">"╝"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">				str = <span class="string">"╠"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">18</span>)</span><br><span class="line">				str = <span class="string">"╣"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">0</span>)</span><br><span class="line">				str = <span class="string">"╦"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (j == <span class="number">18</span>)</span><br><span class="line">				str = <span class="string">"╩"</span>;</span><br><span class="line">			<span class="keyword">else</span> str = <span class="string">"╬"</span>;</span><br><span class="line">			PrintInXY(i * <span class="number">2</span> + Left, j + Top, str);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//═║╔╗╚╝╠╣╦╩╬○●</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Game</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> Winner;</span><br><span class="line">	<span class="keyword">bool</span> isBlack = <span class="literal">true</span>;</span><br><span class="line">	ShowInfo(isBlack);</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (isBlack) &#123;</span><br><span class="line">			COORD pos = getMouseXY(LEFT_CLICK);</span><br><span class="line">			x = (pos.X - Left) / <span class="number">2</span>, y = pos.Y - Top;</span><br><span class="line">			<span class="keyword">if</span> (x &gt; <span class="number">18</span> || x &lt; <span class="number">0</span> || y &gt; <span class="number">18</span> || y &lt; <span class="number">0</span>)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (ChessBoard[x][y] == <span class="number">0</span>) &#123;</span><br><span class="line">				PrintInXY(x * <span class="number">2</span> + Left, y + Top, BlackChess);</span><br><span class="line">				ChessBoard[x][y] = BLACK;</span><br><span class="line">				isBlack = !isBlack;</span><br><span class="line">				ShowInfo(isBlack);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			COORD pos = getMouseXY(RIGHT_CLICK);</span><br><span class="line">			x = (pos.X - Left) / <span class="number">2</span>, y = pos.Y - Top;</span><br><span class="line">			<span class="keyword">if</span> (x &gt; <span class="number">18</span> || x &lt; <span class="number">0</span> || y &gt; <span class="number">18</span> || y &lt; <span class="number">0</span>)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (ChessBoard[x][y] == <span class="number">0</span>) &#123;</span><br><span class="line">				PrintInXY(x * <span class="number">2</span> + Left, y + Top, WhiteChess);</span><br><span class="line">				ChessBoard[x][y] = WHITE;</span><br><span class="line">				isBlack = !isBlack;</span><br><span class="line">				ShowInfo(isBlack);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Winner = CheckWin(x, y);</span><br><span class="line">		<span class="keyword">if</span> (Winner)<span class="keyword">break</span>;</span><br><span class="line">	&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br><span class="line">	Message(Winner);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">GameState <span class="title">CheckWin</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> tmp = ChessBoard[x][y];</span><br><span class="line">	<span class="keyword">int</span> num[<span class="number">4</span>] = &#123; <span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> i, j, m, n;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">		m = x; n = y; j = i % <span class="number">4</span>;</span><br><span class="line">		m += Direct[i][<span class="number">0</span>];</span><br><span class="line">		n += Direct[i][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">while</span> (ChessBoard[m][n] == tmp) &#123;</span><br><span class="line">			m += Direct[i][<span class="number">0</span>];</span><br><span class="line">			n += Direct[i][<span class="number">1</span>];</span><br><span class="line">			num[j]++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">if</span> (num[i] &gt;= <span class="number">5</span>)</span><br><span class="line">			<span class="keyword">return</span> tmp;</span><br><span class="line">	<span class="keyword">return</span> PLAYING;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Message</span><span class="params">(<span class="keyword">int</span> whoWin)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> * WhoWin;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">7</span> * <span class="number">2</span> + Left, y = <span class="number">9</span> + Top;</span><br><span class="line">	<span class="keyword">char</span> * str;</span><br><span class="line">	str = <span class="string">"╔═════════╗"</span>;</span><br><span class="line">	PrintInXY(x - <span class="number">6</span>, y - <span class="number">1</span>, str);</span><br><span class="line">	str = <span class="string">"║                  ║"</span>;</span><br><span class="line">	PrintInXY(x - <span class="number">6</span>, y, str);</span><br><span class="line">	str = <span class="string">"╚═════════╝"</span>;</span><br><span class="line">	PrintInXY(x - <span class="number">6</span>, y + <span class="number">1</span>, str);</span><br><span class="line">	<span class="keyword">if</span> (whoWin == BLACKWIN) &#123;</span><br><span class="line">		WhoWin = <span class="string">"黑棋赢了"</span>;</span><br><span class="line">		PrintInXY(x, y, WhoWin);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		WhoWin = <span class="string">"白棋赢了"</span>;</span><br><span class="line">		PrintInXY(x, y, WhoWin);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="迷宫-随机生成"><a href="#迷宫-随机生成" class="headerlink" title="迷宫(随机生成)"></a>迷宫(随机生成)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;conio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEYDOWN(vk_code) ((GetAsyncKeyState(vk_code) &amp; 0x8000) ? 1 : 0)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEYUP(vk_code) ((GetAsyncKeyState(vk_code) &amp; 0x8000) ? 0 : 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TOP 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT (2 * TOP)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_SIZE 40</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RANDOM(min, max) ((min) + (rand()%((max) - (min) + 1)))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ROAD 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WALL 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> END 2</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">PlayerCharacter</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	<span class="keyword">char</span> *PC;</span><br><span class="line">	PlayerCharacter() &#123;</span><br><span class="line">		PC = <span class="string">"●"</span>;</span><br><span class="line">		x = y = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;PlayerCharacter;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">RandomMap</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> **Map;</span><br><span class="line">	<span class="keyword">int</span> mapW, mapH;</span><br><span class="line">	<span class="keyword">long</span> mapID;</span><br><span class="line">	RandomMap() &#123;</span><br><span class="line">		mapW = <span class="number">2</span> * RANDOM(<span class="number">8</span>, MAX_SIZE / <span class="number">2</span>) + <span class="number">1</span>;</span><br><span class="line">		mapH = <span class="number">2</span> * RANDOM(<span class="number">5</span>, MAX_SIZE / <span class="number">2</span>) + <span class="number">1</span>;</span><br><span class="line">		Map = (<span class="keyword">int</span>**)<span class="built_in">malloc</span>(mapH * <span class="keyword">sizeof</span>(<span class="keyword">int</span>*));</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mapH; i++) &#123;</span><br><span class="line">			Map[i] = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(mapW * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mapW; j++)</span><br><span class="line">				Map[i][j] = WALL;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;RandomMap;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GotoXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y)</span></span>;<span class="comment">//光标移动</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HideCursor</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create</span><span class="params">(RandomMap rMap, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitMap</span><span class="params">(RandomMap rMap)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PaintMapPoint</span><span class="params">(RandomMap rMap, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GamePlaying</span><span class="params">(PlayerCharacter &amp;pc)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PaintPC</span><span class="params">(PlayerCharacter pc)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(RandomMap rMap, PlayerCharacter &amp;pc, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	SYSTEMTIME sys[<span class="number">2</span>];</span><br><span class="line">	system(<span class="string">"MODE con: COLS=120 LINES=50"</span>);</span><br><span class="line">	srand((<span class="keyword">unsigned</span> <span class="keyword">int</span>)time(<span class="number">0</span>));</span><br><span class="line">	HideCursor();</span><br><span class="line">	PlayerCharacter pc;</span><br><span class="line">	GetLocalTime(&amp;sys[<span class="number">0</span>]);</span><br><span class="line">	GamePlaying(pc);</span><br><span class="line">	GetLocalTime(&amp;sys[<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">int</span> mm = sys[<span class="number">1</span>].wMinute - sys[<span class="number">0</span>].wMinute, ss = sys[<span class="number">1</span>].wSecond - sys[<span class="number">0</span>].wSecond;</span><br><span class="line">	<span class="keyword">if</span> (ss &lt; <span class="number">0</span>) &#123;</span><br><span class="line">		ss += <span class="number">60</span>;</span><br><span class="line">		mm -= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (ss &gt; <span class="number">59</span>) &#123;</span><br><span class="line">		ss -= <span class="number">60</span>;</span><br><span class="line">		mm += <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n好牛逼啊，走出迷宫只花了%2d:%2d的时间！\n"</span>, mm, ss);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GotoXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y)</span> </span>&#123;</span><br><span class="line">	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), &#123; x,y &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HideCursor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	CONSOLE_CURSOR_INFO cursor_info = &#123; <span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line">	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;cursor_info);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CheckBorder</span><span class="params">(RandomMap rMap, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x &lt;= <span class="number">0</span> || y &lt;= <span class="number">0</span> || x &gt;= rMap.mapW - <span class="number">1</span> || y &gt;= rMap.mapH - <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CheckOutside</span><span class="params">(RandomMap rMap, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span> || x &gt; rMap.mapW - <span class="number">1</span> || y &gt; rMap.mapH - <span class="number">1</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create</span><span class="params">(RandomMap rMap, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> next[<span class="number">4</span>][<span class="number">2</span>] = &#123;</span><br><span class="line">		&#123; <span class="number">0</span>,<span class="number">1</span> &#125;,</span><br><span class="line">		&#123; <span class="number">1</span>,<span class="number">0</span> &#125;,</span><br><span class="line">		&#123; <span class="number">0</span>,<span class="number">-1</span> &#125;,</span><br><span class="line">		&#123; <span class="number">-1</span>,<span class="number">0</span> &#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">int</span> i, j, t;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">		j = rand() % <span class="number">4</span>;</span><br><span class="line">		t = next[i][<span class="number">0</span>], next[i][<span class="number">0</span>] = next[j][<span class="number">0</span>], next[j][<span class="number">0</span>] = t;</span><br><span class="line">		t = next[i][<span class="number">1</span>], next[i][<span class="number">1</span>] = next[j][<span class="number">1</span>], next[j][<span class="number">1</span>] = t;</span><br><span class="line">	&#125;</span><br><span class="line">	rMap.Map[m][n] = ROAD;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i&lt;<span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">if</span> (!CheckBorder(rMap, n + <span class="number">2</span> * next[i][<span class="number">1</span>], m + <span class="number">2</span> * next[i][<span class="number">0</span>]) &amp;&amp; rMap.Map[m + <span class="number">2</span> * next[i][<span class="number">0</span>]][n + <span class="number">2</span> * next[i][<span class="number">1</span>]] == WALL) &#123;</span><br><span class="line">			rMap.Map[m + next[i][<span class="number">0</span>]][n + next[i][<span class="number">1</span>]] = ROAD;</span><br><span class="line">			Create(rMap, m + <span class="number">2</span> * next[i][<span class="number">0</span>], n + <span class="number">2</span> * next[i][<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitMap</span><span class="params">(RandomMap rMap)</span> </span>&#123;</span><br><span class="line">	Create(rMap, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	rMap.Map[rMap.mapH - <span class="number">2</span>][rMap.mapW - <span class="number">2</span>] = END;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rMap.mapW; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; rMap.mapH; j++) &#123;</span><br><span class="line">			PaintMapPoint(rMap, i, j);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PaintMapPoint</span><span class="params">(RandomMap rMap, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	GotoXY(x * <span class="number">2</span> + LEFT, y + TOP);</span><br><span class="line">	<span class="keyword">switch</span> (rMap.Map[y][x]) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"  "</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"※"</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">" E"</span>);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PaintPC</span><span class="params">(PlayerCharacter pc)</span> </span>&#123;</span><br><span class="line">	GotoXY(pc.x * <span class="number">2</span> + LEFT, pc.y + TOP);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s"</span>, pc.PC);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Move</span><span class="params">(RandomMap rMap, PlayerCharacter &amp;pc, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	PaintMapPoint(rMap, pc.x, pc.y);</span><br><span class="line">	pc.x += x;</span><br><span class="line">	pc.y += y;</span><br><span class="line">	PaintPC(pc);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GamePlaying</span><span class="params">(PlayerCharacter &amp;pc)</span> </span>&#123;</span><br><span class="line">	RandomMap rm;</span><br><span class="line">	InitMap(rm);</span><br><span class="line">	PaintPC(pc);</span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	<span class="keyword">while</span> (pc.x != rm.mapW - <span class="number">2</span> || pc.y != rm.mapH - <span class="number">2</span>) &#123;</span><br><span class="line">		x = <span class="number">0</span>;</span><br><span class="line">		y = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (KEYDOWN(VK_UP)) &#123;</span><br><span class="line">			y--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (KEYDOWN(VK_DOWN)) &#123;</span><br><span class="line">			y++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (KEYDOWN(VK_LEFT)) &#123;</span><br><span class="line">			x--;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (KEYDOWN(VK_RIGHT)) &#123;</span><br><span class="line">			x++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (x || y)</span><br><span class="line">			<span class="keyword">if</span> (CheckOutside(rm, pc.x + x, pc.y + y) &amp;&amp; rm.Map[pc.y + y][pc.x + x] != WALL) &#123;</span><br><span class="line">				Move(rm, pc, x, y);</span><br><span class="line">			&#125;</span><br><span class="line">		Sleep(<span class="number">100</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	GotoXY(LEFT, rm.mapH + TOP);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="贪吃蛇"><a href="#贪吃蛇" class="headerlink" title="贪吃蛇"></a>贪吃蛇</h2> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;conio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEYDOWN(vk_code) ((GetAsyncKeyState(vk_code) &amp; 0x8000) ? 1 : 0)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> KEYUP(vk_code) ((GetAsyncKeyState(vk_code) &amp; 0x8000) ? 0 : 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RANDOM(min, max) ((min) + (rand()%((max) - (min) + 1)))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAP_SIZE 20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TOP 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT (TOP * 2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WIN 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOSE -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GAMING 0</span></span><br><span class="line"><span class="comment">//-------------贪吃蛇自身结构---------</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Position</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	Position <span class="keyword">operator</span>+(Position op) &#123;</span><br><span class="line">		<span class="keyword">return</span>&#123; x + op.x,y + op.y &#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	Position <span class="keyword">operator</span>-(Position op) &#123;</span><br><span class="line">		<span class="keyword">return</span>&#123; x - op.x,y - op.y &#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span>!=(Position op) &#123;</span><br><span class="line">		<span class="keyword">return</span> (x != op.x || y != op.y);</span><br><span class="line">	&#125;</span><br><span class="line">	Position(<span class="keyword">int</span> i = <span class="number">0</span>, <span class="keyword">int</span> j = <span class="number">0</span>) &#123;</span><br><span class="line">		x = i; y = j;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;Position, Direction;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SnakeNode</span> &#123;</span></span><br><span class="line">	SnakeNode* next;</span><br><span class="line">	SnakeNode* prev;</span><br><span class="line">	Position pos;</span><br><span class="line">	Direction dir;</span><br><span class="line">&#125;*SnakeBody;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Snake</span> &#123;</span></span><br><span class="line">	SnakeBody head, tail;</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">	Snake() &#123;</span><br><span class="line">		length = <span class="number">8</span>;</span><br><span class="line">		head = <span class="keyword">new</span> SnakeNode();</span><br><span class="line">		SnakeBody q = head;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">			SnakeBody p = <span class="keyword">new</span> SnakeNode();</span><br><span class="line">			p-&gt;pos = &#123; <span class="number">0</span> , length - i - <span class="number">1</span> &#125;;</span><br><span class="line">			p-&gt;dir.x = <span class="number">0</span>;</span><br><span class="line">			p-&gt;dir.y = <span class="number">1</span>;</span><br><span class="line">			p-&gt;prev = <span class="literal">NULL</span>;</span><br><span class="line">			<span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">				q = head = p;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				p-&gt;prev = q;</span><br><span class="line">				q-&gt;next = p;</span><br><span class="line">				q = q-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		tail = q;</span><br><span class="line">		tail-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;Snake;</span><br><span class="line"><span class="keyword">int</span> Map[MAP_SIZE][MAP_SIZE];</span><br><span class="line"></span><br><span class="line"><span class="comment">//----------相关函数--------</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GotoXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y)</span></span>;<span class="comment">//光标移动</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HideCursor</span><span class="params">()</span></span>;<span class="comment">//隐藏光标</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Gaming</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	system(<span class="string">"MODE con: COLS=50 LINES=22"</span>);</span><br><span class="line">	srand((<span class="keyword">unsigned</span> <span class="keyword">int</span>)time(<span class="number">0</span>));</span><br><span class="line">	HideCursor();</span><br><span class="line">	Gaming();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GotoXY</span><span class="params">(<span class="keyword">short</span> x, <span class="keyword">short</span> y)</span> </span>&#123;</span><br><span class="line">	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), &#123; x,y &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">HideCursor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	CONSOLE_CURSOR_INFO cursor_info = &#123; <span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line">	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;cursor_info);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MoveSnake</span><span class="params">(Snake &amp;S)</span> </span>&#123;</span><br><span class="line">	SnakeBody p = S.head;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		<span class="keyword">if</span> (!p-&gt;next)</span><br><span class="line">			Map[p-&gt;pos.y][p-&gt;pos.x] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (p == S.head)</span><br><span class="line">			Map[p-&gt;pos.y][p-&gt;pos.x] = <span class="number">1</span>;</span><br><span class="line">		p-&gt;pos = p-&gt;pos + p-&gt;dir;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	Map[S.head-&gt;pos.y][S.head-&gt;pos.x] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PaintSnake</span><span class="params">(Snake &amp;S)</span> </span>&#123;</span><br><span class="line">	SnakeBody p = S.head;</span><br><span class="line">	Position q;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		q = p-&gt;pos - p-&gt;dir;</span><br><span class="line">		GotoXY(<span class="number">2</span> * q.x + LEFT, q.y + TOP);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"  "</span>);</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	p = S.head;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		q = p-&gt;pos;</span><br><span class="line">		GotoXY(<span class="number">2</span> * q.x + LEFT, q.y + TOP);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"□"</span>);</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	GotoXY(<span class="number">2</span> * S.head-&gt;pos.x + LEFT, S.head-&gt;pos.y + TOP);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"○"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateFood</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">		x = RANDOM(<span class="number">1</span>, MAP_SIZE - <span class="number">1</span>);</span><br><span class="line">		y = RANDOM(<span class="number">1</span>, MAP_SIZE - <span class="number">1</span>);</span><br><span class="line">	&#125; <span class="keyword">while</span> (Map[y][x] != <span class="number">0</span>);</span><br><span class="line">	Map[y][x] = <span class="number">3</span>;</span><br><span class="line">	GotoXY(LEFT + <span class="number">2</span> * x, TOP + y);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"★"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Gaming</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">-1</span>; i &lt;= MAP_SIZE; i++) &#123;</span><br><span class="line">		GotoXY(LEFT + <span class="number">2</span> * i, <span class="number">0</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"※"</span>);</span><br><span class="line">		GotoXY(LEFT + <span class="number">2</span> * i, TOP + MAP_SIZE);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"※"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">-1</span>; i &lt;= MAP_SIZE; i++) &#123;</span><br><span class="line">		GotoXY(<span class="number">0</span>, TOP + i);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"※"</span>);</span><br><span class="line">		GotoXY(LEFT + <span class="number">2</span> * MAP_SIZE, TOP + i);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"※"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Snake snake;</span><br><span class="line">	Direction nowD = &#123; <span class="number">0</span>,<span class="number">1</span> &#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAP_SIZE; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; MAP_SIZE; j++)</span><br><span class="line">			Map[i][j] = <span class="number">0</span>;</span><br><span class="line">	SnakeBody p = snake.head;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		GotoXY(LEFT + <span class="number">2</span> * p-&gt;pos.x, TOP + p-&gt;pos.y);</span><br><span class="line">		<span class="keyword">if</span>(p == snake.head)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"○"</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"□"</span>);</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	p = snake.head;</span><br><span class="line">	<span class="keyword">while</span> (p) &#123;</span><br><span class="line">		<span class="keyword">if</span>(p == snake.head)Map[p-&gt;pos.y][p-&gt;pos.x] = <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">else</span> Map[p-&gt;pos.y][p-&gt;pos.x] = <span class="number">1</span>;</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	CreateFood();</span><br><span class="line">	<span class="keyword">bool</span> win = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (_kbhit()) &#123;</span><br><span class="line">			<span class="keyword">if</span> (KEYDOWN(VK_UP)) &#123;</span><br><span class="line">				<span class="keyword">if</span> (nowD != Direction(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">					nowD = &#123; <span class="number">0</span>,<span class="number">-1</span> &#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (KEYDOWN(VK_DOWN)) &#123;</span><br><span class="line">				<span class="keyword">if</span> (nowD != Direction(<span class="number">0</span>, <span class="number">-1</span>))</span><br><span class="line">					nowD = &#123; <span class="number">0</span>,<span class="number">1</span> &#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (KEYDOWN(VK_LEFT)) &#123;</span><br><span class="line">				<span class="keyword">if</span> (nowD != Direction(<span class="number">1</span>, <span class="number">0</span>))</span><br><span class="line">					nowD = &#123; <span class="number">-1</span>,<span class="number">0</span> &#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (KEYDOWN(VK_RIGHT)) &#123;</span><br><span class="line">				<span class="keyword">if</span> (nowD != Direction(<span class="number">-1</span>, <span class="number">0</span>))</span><br><span class="line">					nowD = &#123; <span class="number">1</span>,<span class="number">0</span> &#125;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		snake.head-&gt;dir = nowD;</span><br><span class="line">		<span class="keyword">for</span> (SnakeBody p = snake.head-&gt;next;p; p = p-&gt;next) &#123;</span><br><span class="line">			p-&gt;dir = p-&gt;prev-&gt;pos - p-&gt;pos;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (Map[snake.head-&gt;pos.y + snake.head-&gt;dir.y][snake.head-&gt;pos.x + snake.head-&gt;dir.x] == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (Map[snake.head-&gt;pos.y + snake.head-&gt;dir.y][snake.head-&gt;pos.x + snake.head-&gt;dir.x] == <span class="number">3</span>) &#123;</span><br><span class="line">			SnakeBody q = <span class="keyword">new</span> SnakeNode();</span><br><span class="line">			q-&gt;dir = snake.tail-&gt;dir;</span><br><span class="line">			q-&gt;pos = snake.tail-&gt;pos - snake.tail-&gt;dir;</span><br><span class="line">			q-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">			q-&gt;prev = snake.tail;</span><br><span class="line">			snake.tail-&gt;next = q;</span><br><span class="line">			snake.tail = q;</span><br><span class="line">			snake.length++;</span><br><span class="line">			Map[q-&gt;pos.y][q-&gt;pos.x] = <span class="number">1</span>;</span><br><span class="line">			CreateFood();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (Map[snake.head-&gt;pos.y][snake.head-&gt;pos.x] == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		MoveSnake(snake);</span><br><span class="line">		PaintSnake(snake);</span><br><span class="line">		<span class="keyword">if</span> (snake.length == MAP_SIZE * MAP_SIZE - <span class="number">1</span>) &#123;</span><br><span class="line">			win = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (snake.head-&gt;pos.x &lt; <span class="number">0</span> || snake.head-&gt;pos.x &gt;= MAP_SIZE || snake.head-&gt;pos.y &lt; <span class="number">0</span> || snake.head-&gt;pos.y &gt;= MAP_SIZE) &#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		Sleep(<span class="number">200</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+    
+    <div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>亲，可以打赏点吗？.</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="GaryCao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="GaryCao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GaryCao</li>
+  <li class="post-copyright-date">
+    <strong>发表时间：</strong>
+    2017年07月01日 - 12:37
+  </li>
+  <li class="post-copyright-update">
+    <strong>最后更新：</strong>
+    2017年11月11日 - 13:36
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://garycao97.github.io/2017/07/01/控制台小游戏合集（持续更新）/" title="控制台小游戏合集（持续更新）">http://garycao97.github.io/2017/07/01/控制台小游戏合集（持续更新）/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://garycao97.github.io/2017/07/01/控制台小游戏合集（持续更新）/" aria-label="复制成功！"></i></span>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+<script type="text/javascript" src="//jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+<script src="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/游戏/" rel="tag"># 游戏</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/27/小小的灵感/" rel="next" title="小小的灵感">
+                <i class="fa fa-chevron-left"></i> 小小的灵感
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/01/C语言基础/" rel="prev" title="C语言基础">
+                C语言基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="GaryCao">
+            
+              <p class="site-author-name" itemprop="name">GaryCao</p>
+              <div class="site-description motion-element" itemprop="description">即将成为程序猿的大学生一枚</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/garycao97" title="GitHub &rarr; https://github.com/garycao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:gary_cao97@163.com" title="E-Mail &rarr; mailto:gary_cao97@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/GaryCao97" title="Weibo &rarr; https://weibo.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/GaryCao97" title="Twitter &rarr; https://twitter.com/GaryCao97" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://2802341836.github.io" title="http://2802341836.github.io" rel="noopener" target="_blank">Cobboc</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://lourisxu.github.io" title="http://lourisxu.github.io" rel="noopener" target="_blank">Louris</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#五子棋-鼠标下棋"><span class="nav-text">五子棋(鼠标下棋)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迷宫-随机生成"><span class="nav-text">迷宫(随机生成)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪吃蛇"><span class="nav-text">贪吃蛇</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GaryCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">149k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">4:31</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
